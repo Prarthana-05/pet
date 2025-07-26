@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Dashboard | Pet App</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-links">
+      <a href="user-dashboard.html">Home</a>
+      <a href="quiz.html">Pet Compatibility Quiz</a>
+      <a href="vet-services.html">Nearby Vet & Services</a>
+      <a href="adoption-history.html">Adoption Status</a>
+    </div>
+    <button id="logoutBtn">Logout</button>
+  </nav>
+
+  <div class="container">
+    <h2>Available Pets for Adoption</h2>
+    <div id="petGrid" class="pet-grid">
+      <!-- Pet cards will be loaded here -->
+    </div>
+  </div>
+
+
+ <!-- Adoption Request Modal -->
+<div id="adoptionModal" class="modal hidden">
+  <div class="modal-content">
+    <span id="closeModal" class="close">&times;</span>
+    <h3>Adopt <span id="adoptionPetName"></span></h3>
+
+    <input type="text" id="userName" placeholder="Your Name" required />
+    <input type="tel" id="userPhone" placeholder="Phone Number" required />
+    <textarea id="userAddress" placeholder="Your Address" rows="2" required></textarea>
+    <textarea id="userMessage" placeholder="Why do you want to adopt this pet?" rows="3" required></textarea>
+
+    <button id="submitAdoptionRequest">Submit Request</button>
+  </div>
+</div>
+
+
+  <script type="module" src="js/user-dashboard.js"></script>
+
+</body>
+</html>

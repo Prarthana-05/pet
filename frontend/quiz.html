@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="css/styles.css">
+
+<nav class="navbar">
+    <div class="nav-links">
+    <a href="home.html">Home</a>
+    <a href="add-pet.html">Add Pet</a>
+    <a href="quiz.html">Pet Compatibility Quiz</a>
+    <a href="vet-services.html">Nearby Vet & Services</a>
+    <a href="adoption-requests.html">Adoption Requests</a>
+    </div>
+    <button id="logoutBtn">Logout</button>
+
+  </nav>
+
+<div class="form-container">
+  <h2>Pet Compatibility Quiz</h2>
+  <form id="quizForm">
+
+    <label>1️⃣ Your Living Space:</label><br>
+    <select name="space" required>
+      <option value="Small">Small Apartment</option>
+      <option value="Medium">Medium House</option>
+      <option value="Large">Large House with Yard</option>
+    </select><br><br>
+
+    <label>2️⃣ Your Daily Activity Level:</label><br>
+    <select name="activity" required>
+      <option value="Low">Low</option>
+      <option value="Moderate">Moderate</option>
+      <option value="High">High</option>
+    </select><br><br>
+
+    <label>3️⃣ Time You Can Spend with Pet Daily:</label><br>
+    <select name="time" required>
+      <option value="Less than 1 hour">Less than 1 hour</option>
+      <option value="1-3 hours">1-3 hours</option>
+      <option value="More than 3 hours">More than 3 hours</option>
+    </select><br><br>
+
+    <label>4️⃣ Are you looking for a:</label><br>
+    <select name="petType" required>
+      <option value="Companion">Companion</option>
+      <option value="Guard">Guard</option>
+      <option value="Low Maintenance">Low Maintenance</option>
+    </select><br><br>
+
+    <label>5️⃣ Your Budget for Pet Care (Monthly):</label><br>
+    <select name="budget" required>
+      <option value="Low">Low (Below $50)</option>
+      <option value="Medium">$50 - $150</option>
+      <option value="High">Above $150</option>
+    </select><br><br>
+
+    <button type="submit">Get My Perfect Pet!</button>
+
+  </form>
+
+   
+</div>
+<div id="quizResultsContainer" class="pet-grid"></div>
+<script type="module" src="js/quiz.js"></script>

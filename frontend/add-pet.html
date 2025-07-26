@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add Pet | Pet App</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="add-pet.html">Add Pet</a>
+      <a href="quiz.html">Pet Compatibility Quiz</a>
+      <a href="vet-services.html">Nearby Vet & Services</a>
+      <a href="adoption-requests.html">Adoption Requests</a>
+    </div>
+    <button id="logoutBtn">Logout</button>
+  </nav>
+
+  <div class="form-container">
+    <h2>Add New Pet</h2>
+    <form id="addPetForm" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Pet Name" required /><br />
+      <input type="text" name="breed" placeholder="Breed" required /><br />
+      <input type="number" name="age" placeholder="Age" required /><br />
+      <input type="text" name="ownerName" placeholder="Owner Name" required /><br />
+      <input type="text" name="contact" placeholder="Contact" required /><br />
+      <select name="status" required>
+        <option value="Available">Available</option>
+        <option value="Pending">Pending</option>
+        <option value="Adopted">Adopted</option>
+      </select><br />
+      <input type="file" name="image" accept="image/*" required /><br />
+      <button type="submit">Add Pet</button>
+    </form>
+  </div>
+
+  <script type="module" src="js/add-pet.js"></script>
+</body>
+</html>

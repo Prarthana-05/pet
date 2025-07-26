@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nearby Vet & Services | Pet App</title>
+  <link rel="stylesheet" href="css/styles.css">
+
+   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="add-pet.html">Add Pet</a>
+      <a href="quiz.html">Pet Compatibility Quiz</a>
+      <a href="vet-services.html">Nearby Vet & Services</a>
+      <a href="adoption-requests.html">Adoption Requests</a>
+    </div>
+    <button id="logoutBtn">Logout</button>
+  </nav>
+
+  <div class="container">
+    <h2>Find Nearby Vet Clinics & Pet Shops</h2>
+
+    <div class="form-container">
+      <input type="text" id="locationInput" placeholder="Enter your area">
+      <button id="findVetBtn">Find Vet Services</button>
+    </div>
+
+    <div id="vetResults" class="pet-grid">
+      <!-- Results will appear here -->
+    </div>
+  </div>
+
+
+   <div id="map" style="height: 400px;"></div>
+
+  <script src="js/services.js"></script>
+
+</body>
+</html>

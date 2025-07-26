@@ -1,0 +1,85 @@
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-links">
+    <a href="home.html">Home</a>
+    <a href="add-pet.html">Add Pet</a>
+    <a href="quiz.html">Pet Compatibility Quiz</a>
+    <a href="vet-services.html">Nearby Vet & Services</a>
+    <a href="adoption-requests.html">Adoption Requests</a>
+  </div>
+  <button id="logoutBtn">Logout</button>
+</nav>
+
+<link rel="stylesheet" href="css/styles.css">
+
+<div class="container">
+  <h2>Pet Details</h2>
+  <div id="petDetailsContainer"> </div>
+  <button id="editBtn">Edit</button>
+  <button id="deleteBtn">Delete</button>
+</div>
+
+<script>
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem('token');
+    window.location.href = 'index.html';
+  });
+</script>
+
+<script type="module">
+  const API_BASE = 'http://localhost:5000/api';
+  const token = localStorage.getItem('token');
+  const petId = new URLSearchParams(window.location.search).get('id');
+
+  if (!token) window.location.href = 'index.html';
+
+  const container = document.getElementById('petDetailsContainer');
+
+  async function loadPetDetails() {
+    try {
+      const res = await fetch(`${API_BASE}/pets/${petId}`, {
+        headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}` }
+      });
+      if (!res.ok) throw new Error('Failed to fetch pet');
+      const pet = await res.json();
+
+      container.innerHTML = `
+        <img src="http://localhost:5000/${pet.image}" alt="${pet.name}">
+        <p><strong>Name:</strong> ${pet.name}</p>
+        <p><strong>Breed:</strong> ${pet.breed}</p>
+        <p><strong>Age:</strong> ${pet.age}</p>
+        <p><strong>Owner:</strong> ${pet.ownerName}</p>
+        <p><strong>Contact:</strong> ${pet.contact}</p>
+        <p><strong>Status:</strong> ${pet.status}</p>
+      `;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  document.getElementById('editBtn').addEventListener('click', () => {
+    window.location.href = `edit-pet.html?id=${petId}`;
+  });
+
+  document.getElementById('deleteBtn').addEventListener('click', async () => {
+    if (!confirm('Are you sure you want to delete this pet?')) return;
+    try {
+      const res = await fetch(`${API_BASE}/pets/${petId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (!res.ok) throw new Error('Failed to delete');
+
+      alert('Pet deleted successfully!');
+      window.location.href = 'home.html';
+    } catch (err) {
+      console.error(err);
+      alert('Error deleting pet');
+    }
+  });
+
+  loadPetDetails();
+</script>
