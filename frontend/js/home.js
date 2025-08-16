@@ -12,7 +12,7 @@ const petGrid = document.getElementById('petGrid');
 
 async function fetchPets() {
   try {
-    const res = await fetch(`${API_BASE}/pets`, {
+    const res = await fetch(`${API_BASE}/api/pets`, {
       headers: { 'Authorization': `Bearer ${token}` }
     });
 
