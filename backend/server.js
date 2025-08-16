@@ -20,7 +20,10 @@ const socketIo = require('socket.io');
 const server = http.createServer(app);
 
 // ✅ Middleware
-app.use(cors());
+app.use(cors({
+  origin: '*', // or your frontend domain
+  methods: ['GET','POST','PUT','DELETE']
+}));
 app.use(express.json());
 
 // ✅ Routes
