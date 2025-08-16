@@ -10,7 +10,7 @@ export const registerUser = async (email, name, password) => {
 };
 
 export const loginUser = async (name, password) => {
-  const res = await fetch(`${API_BASE}/auth/login`, {
+  const res = await fetch(`${API_BASE}/api/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, password })
