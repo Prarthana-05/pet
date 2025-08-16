@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://pet-ylqw.onrender.com';
 
 export const registerUser = async (email, name, password) => {
   const res = await fetch(`${API_BASE}/auth/register`, {
