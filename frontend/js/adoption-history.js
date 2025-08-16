@@ -38,7 +38,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         card.innerHTML = `
           <strong>Pet:</strong> ${request.petName}<br>
           <strong>Status:</strong> ${request.status}<br>
-          <strong>Requested At:</strong> ${dateStr}
+          <strong>Requested At:</strong> ${dateStr}<br>
+          <strong>Admin Response:</strong> ${request.adminResponse || 'No response yet'}
         `;
         container.appendChild(card);
       });

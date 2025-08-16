@@ -12,11 +12,16 @@ if (registerForm) {
 
     const result = await registerUser(email, name, password);
     if (result.token) {
+      // Store authentication data
       localStorage.setItem('token', result.token);
       localStorage.setItem('role', result.role);
-      
-      // ADD THIS LINE - store user data
       localStorage.setItem('user', JSON.stringify(result.user || result));
+      
+      // Store individual user properties for chat system
+      localStorage.setItem('userId', result.user?.id || result.id || result._id);
+      localStorage.setItem('userName', result.user?.name || result.name || name);
+      localStorage.setItem('userEmail', result.user?.email || result.email || email);
+      localStorage.setItem('userRole', result.role || 'user');
       
       if (result.role === 'admin') {
         window.location.href = 'index.html';
@@ -37,11 +42,16 @@ if (loginForm) {
 
     const result = await loginUser(name, password);
     if (result.token) {
+      // Store authentication data
       localStorage.setItem('token', result.token);
       localStorage.setItem('role', result.role);
-      
-      // ADD THIS LINE - store user data
       localStorage.setItem('user', JSON.stringify(result.user || result));
+      
+      // Store individual user properties for chat system
+      localStorage.setItem('userId', result.user?.id || result.id || result._id);
+      localStorage.setItem('userName', result.user?.name || result.name || name);
+      localStorage.setItem('userEmail', result.user?.email || result.email);
+      localStorage.setItem('userRole', result.role || 'user');
       
       if (result.role === 'admin') {
         window.location.href = 'home.html';

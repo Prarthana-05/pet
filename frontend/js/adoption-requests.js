@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <p><strong>User:</strong> ${req.userName}</p>
         <p><strong>Email:</strong> ${req.userEmail}</p>
         <p><strong>Status:</strong> ${req.status}</p>
+        <strong>Admin Response:</strong> ${req.adminResponse || 'No response yet'}
       `;
       container.appendChild(div);
     });

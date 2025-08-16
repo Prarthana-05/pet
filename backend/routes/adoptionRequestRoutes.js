@@ -50,7 +50,8 @@ router.get("/user",verifyToken , async (req, res) => {
     const formatted = requests.map(request => ({
       petName: request.petId.name,
       status: request.status,
-      requestedAt: request.requestDate
+      requestedAt: request.requestDate,
+      adminResponse: request.adminResponse
     }));
 
     res.json(formatted);

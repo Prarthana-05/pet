@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -298,41 +294,21 @@
 </head>
 <body>
 
-
   <nav class="navbar">
     <div class="nav-links">
-    <a href="home.html">Home</a>
-    
-    <a href="quiz.html">Pet Compatibility Quiz</a>
-    <a href="vet-services.html">Nearby Vet & Services</a>
-    <a href="adoption-history.html">Adoption History</a>
+      <a href="home.html">Home</a>
+      <a href="add-pet.html">Add Pet</a>
+      <a href="quiz.html">Pet Compatibility Quiz</a>
+      <a href="vet-services.html">Nearby Vet & Services</a>
+      <a href="adoption-requests.html">Adoption Requests</a>
     </div>
     <button id="logoutBtn">Logout</button>
-
   </nav>
 
-  <div class="container">
-    <h2>Available Pets for Adoption</h2>
-    <div id="petGrid" class="pet-grid">
-      <!-- Pet cards will be loaded here -->
-    </div>
+  <h2>Available Pets</h2>
+  <div id="petGrid" class="pet-grid">
+    <!-- Pet cards will be loaded here -->
   </div>
-
-
- <!-- Adoption Request Modal -->
-<div id="adoptionModal" class="modal hidden">
-  <div class="modal-content">
-    <span id="closeModal" class="close">&times;</span>
-    <h3>Adopt <span id="adoptionPetName"></span></h3>
-
-    <input type="text" id="userName" placeholder="Your Name" required />
-    <input type="tel" id="userPhone" placeholder="Phone Number" required />
-    <textarea id="userAddress" placeholder="Your Address" rows="2" required></textarea>
-    <textarea id="userMessage" placeholder="Why do you want to adopt this pet?" rows="3" required></textarea>
-
-    <button id="submitAdoptionRequest">Submit Request</button>
-  </div>
-</div>
 
   <!-- Chat Button -->
   <button id="chatButton" class="chat-button">
@@ -384,7 +360,6 @@
   <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
 
   <script>
-      
     // Chat Integration Class
     class ChatSystem {
       constructor() {
@@ -495,7 +470,7 @@
             this.isConnected = true;
             this.updateConnectionStatus('connected', `Connected as ${this.currentUser.role}`);
             
-            this.socket.emit('register', { userId: this.currentUser._id });
+            this.socket.emit('register', { userId: this.currentUser.id });
           });
 
           this.socket.on('disconnect', () => {
@@ -510,10 +485,9 @@
           });
 
           this.socket.on('chat message', (msg) => {
-             console.log('Received message:', msg); // Add this!
             console.log('Received message:', msg);
             
-            if (msg.senderId !== this.currentUser._id) {
+            if (msg.senderId !== this.currentUser.id) {
               this.addMessage(msg, false);
               
               // Update notification if chat is closed
@@ -531,7 +505,7 @@
 
       selectRecipient() {
         const recipientId = this.recipientSelect.value;
-        console.log('Selected recipient:', recipientId); // debug line
+        
         if (!recipientId) {
           this.currentRecipient = null;
           this.messageInput.disabled = true;
@@ -553,28 +527,19 @@
 
         console.log(`Loading chat history between ${this.currentUser._id} and ${this.currentRecipient}`);
         
-      const token = localStorage.getItem('token'); // or wherever you're storing it
-
-fetch(`/api/chat/${this.currentUser._id}/${this.currentRecipient}`, {
-  method: 'GET',
-  headers: {
-    'Authorization': `Bearer ${token}`,
-    'Content-Type': 'application/json'
-  }
-})
-  .then(res => {
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return res.json();
-  })
-  .then(messages => {
-    console.log('Loaded messages:', messages);
-    this.displayChatHistory(messages);
-  })
-  .catch(err => {
-    console.error('Error loading chat history:', err);
-    this.chatMessages.innerHTML = '<div class="empty-state">Could not load chat history</div>';
-  });
-
+        fetch(`/api/chat/${this.currentUser._id}/${this.currentRecipient}`)
+          .then(res => {
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            return res.json();
+          })
+          .then(messages => {
+            console.log('Loaded messages:', messages);
+            this.displayChatHistory(messages);
+          })
+          .catch(err => {
+            console.error('Error loading chat history:', err);
+            this.chatMessages.innerHTML = '<div class="empty-state">Could not load chat history</div>';
+          });
       }
 
       displayChatHistory(messages) {
@@ -615,7 +580,7 @@ fetch(`/api/chat/${this.currentUser._id}/${this.currentRecipient}`, {
 
         this.chatMessages.appendChild(messageDiv);
         this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
-      }fetch
+      }
 
       sendMessage() {
         if (!this.isConnected || !this.socket || !this.currentRecipient) return;
@@ -677,14 +642,13 @@ fetch(`/api/chat/${this.currentUser._id}/${this.currentRecipient}`, {
         }
       });
     } else {
-      const admins = users.filter(u => u.role === 'admin' && u._id !== this.currentUser._id);
-admins.forEach(admin => {
-  const option = document.createElement('option');
-  option.value = admin._id;
-  option.textContent = admin.name || 'Admin';
-  select.appendChild(option);
-});
-
+      const admin = users.find(u => u.role === 'admin');
+      if (admin) {
+        const option = document.createElement('option');
+        option.value = admin.id;
+        option.textContent = admin.name || 'Admin';
+        select.appendChild(option);
+      }
     }
 
   } catch (err) {
@@ -714,12 +678,7 @@ admins.forEach(admin => {
     window.ChatSystem = ChatSystem;
   </script>
 
-  <script type="module">
-    import './js/home.js';
-  </script>
+  <script type="module" src="js/home.js"></script>
 
-<script type="module">
-    import './js/user-dashboard.js';
-  </script>
 </body>
 </html>

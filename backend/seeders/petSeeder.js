@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost:27017/petAdoptionApp')
         name: 'Bella',
         breed: 'Labrador Retriever',
         age: 3,
-        compatibilityScore: 90,
+       
         ownerName: 'Alice Smith',
         contact: '9876543210',
         status: 'Available',
@@ -19,17 +19,17 @@ mongoose.connect('mongodb://localhost:27017/petAdoptionApp')
         name: 'Max',
         breed: 'Golden Retriever',
         age: 2,
-        compatibilityScore: 85,
+       
         ownerName: 'Bob Johnson',
         contact: '8765432109',
         status: 'Available',
-        image: 'pet-images/dog1.jpg'
+        image: 'pet-images/dog1.jpeg'
       },
       {
         name: 'Luna',
         breed: 'Persian Cat',
         age: 1,
-        compatibilityScore: 80,
+       
         ownerName: 'Catherine Lee',
         contact: '7654321098',
         status: 'Pending',
@@ -39,7 +39,7 @@ mongoose.connect('mongodb://localhost:27017/petAdoptionApp')
         name: 'Charlie',
         breed: 'Beagle',
         age: 4,
-        compatibilityScore: 88,
+       
         ownerName: 'David Kim',
         contact: '6543210987',
         status: 'Available',
@@ -49,7 +49,7 @@ mongoose.connect('mongodb://localhost:27017/petAdoptionApp')
         name: 'Daisy',
         breed: 'Rabbit',
         age: 1,
-        compatibilityScore: 78,
+        
         ownerName: 'Emma Wilson',
         contact: '5432109876',
         status: 'Adopted',
@@ -69,7 +69,7 @@ mongoose.connect('mongodb://localhost:27017/petAdoptionApp')
         name: 'Milo',
         breed: 'Cockatiel',
         age: 2,
-        compatibilityScore: 75,
+        
         ownerName: 'Grace Martin',
         contact: '3210987654',
         status: 'Available',
@@ -79,7 +79,7 @@ mongoose.connect('mongodb://localhost:27017/petAdoptionApp')
         name: 'Simba',
         breed: 'Maine Coon',
         age: 2,
-        compatibilityScore: 83,
+        
         ownerName: 'Harry Allen',
         contact: '2109876543',
         status: 'Pending',
@@ -89,7 +89,7 @@ mongoose.connect('mongodb://localhost:27017/petAdoptionApp')
         name: 'Coco',
         breed: 'Cockapoo',
         age: 3,
-        compatibilityScore: 89,
+  
         ownerName: 'Isla Young',
         contact: '1098765432',
         status: 'Available',
