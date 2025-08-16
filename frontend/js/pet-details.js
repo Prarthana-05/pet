@@ -4,17 +4,20 @@ const petId = new URLSearchParams(window.location.search).get('id');
 
 if (!token) window.location.href = 'index.html';
 
+// Logout
 document.getElementById('logoutBtn').addEventListener('click', () => {
   localStorage.removeItem('token');
   window.location.href = 'index.html';
 });
 
+// Edit Pet
 document.getElementById('editBtn').addEventListener('click', () => {
   window.location.href = `edit-pet.html?id=${petId}`;
 });
 
+// Delete Pet
 document.getElementById('deleteBtn').addEventListener('click', async () => {
-  console.log('Delete button clicked');  // ✅ Test if this shows in console
+  console.log('Delete button clicked');  // Debug
   if (!confirm('Are you sure you want to delete this pet?')) return;
 
   try {
@@ -23,10 +26,10 @@ document.getElementById('deleteBtn').addEventListener('click', async () => {
       headers: { 'Authorization': `Bearer ${token}` }
     });
 
-    if (!res.ok) throw new Error('Failed to delete pet');
+    if (!res.ok) throw new Error(`Failed to delete pet (status: ${res.status})`);
 
     alert('Pet deleted successfully!');
-    window.location.href = 'home.html';  // Redirect to home or list page after delete
+    window.location.href = 'home.html';
 
   } catch (err) {
     console.error('Error deleting pet:', err);
@@ -34,12 +37,15 @@ document.getElementById('deleteBtn').addEventListener('click', async () => {
   }
 });
 
+// Load Pet Details
 async function loadPetDetails() {
   try {
     const res = await fetch(`${API_BASE}/pets/${petId}`, {
       headers: { 'Authorization': `Bearer ${token}` }
     });
-    if (!res.ok) throw new Error('Failed to fetch pet');
+
+    if (!res.ok) throw new Error(`Failed to fetch pet (status: ${res.status})`);
+
     const pet = await res.json();
 
     document.getElementById('petDetailsContainer').innerHTML = `
@@ -51,9 +57,12 @@ async function loadPetDetails() {
       <p><strong>Contact:</strong> ${pet.contact}</p>
       <p><strong>Status:</strong> ${pet.status}</p>
     `;
+
   } catch (err) {
-    console.error(err);
+    console.error('Error loading pet details:', err);
+    document.getElementById('petDetailsContainer').innerHTML = `<p>Error loading pet details.</p>`;
   }
 }
 
+// Initialize
 loadPetDetails();

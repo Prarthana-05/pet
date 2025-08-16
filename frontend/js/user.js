@@ -1,99 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Home | Pet App</title>
-  <link rel="stylesheet" href="css/styles.css">
-  
-</head>
-<body>
-
-
-  <nav class="navbar">
-    <div class="nav-links" id="navLinks">
-    
-    </div>
-    <button id="logoutBtn">Logout</button>
-
-  </nav>
-
-  <div class="container">
-    <h2>Available Pets for Adoption</h2>
-    <div id="petGrid" class="pet-grid">
-      <!-- Pet cards will be loaded here -->
-    </div>
-  </div>
-
-
- <!-- Adoption Request Modal -->
-<div id="adoptionModal" class="modal hidden">
-  <div class="modal-content">
-    <span id="closeModal" class="close">&times;</span>
-    <h3>Adopt <span id="adoptionPetName"></span></h3>
-
-    <input type="text" id="userName" placeholder="Your Name" required />
-    <input type="tel" id="userPhone" placeholder="Phone Number" required />
-    <textarea id="userAddress" placeholder="Your Address" rows="2" required></textarea>
-    <textarea id="userMessage" placeholder="Why do you want to adopt this pet?" rows="3" required></textarea>
-
-    <button id="submitAdoptionRequest">Submit Request</button>
-  </div>
-</div>
-
-  <!-- Chat Button -->
-  <button id="chatButton" class="chat-button">
-    💬 Live Chat
-    <span id="chatNotification" class="chat-notification" style="display: none;">0</span>
-  </button>
-
-  <!-- Chat Modal -->
-  <div id="chatModal" class="chat-modal">
-    <div class="chat-container">
-      <div class="chat-header">
-        <h3>💬 Live Chat</h3>
-        <button id="closeChatBtn" class="close-chat">×</button>
-      </div>
-
-      <div id="connectionStatus" class="connection-status disconnected">
-        Click to connect to chat
-      </div>
-
-      <div class="recipient-selector">
-        <select id="recipientSelect">
-    <option value="">-- Select a recipient --</option>
-  </select>
-      </div>
-
-      <div id="chatMessages" class="chat-messages">
-        <div class="empty-state">
-          Select a recipient to start chatting
-        </div>
-      </div>
-
-      <div class="chat-input">
-        <input 
-          id="messageInput" 
-          type="text" 
-          placeholder="Type your message..." 
-          disabled
-        />
-        <button id="sendBtn" class="send-btn" disabled>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Socket.io -->
-  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
-
-  <script>
-      
-    // Chat Integration Class
+// Chat Integration Class
     class ChatSystem {
       constructor() {
         this.socket = null;
@@ -408,25 +313,6 @@ admins.forEach(admin => {
 
     // Initialize chat system when DOM is loaded
     document.addEventListener('DOMContentLoaded', () => {
-
-      const user = JSON.parse(localStorage.getItem('user'));
-  const navLinks = document.getElementById('navLinks');
-
-  if (!navLinks || !user) return;
-
-  const links = [
-    { href: 'home.html', text: 'Home' },
-    { href: 'quiz.html', text: 'Pet Compatibility Quiz' },
-    { href: 'vet-services.html', text: 'Nearby Vet & Services' },
-    { href: 'adoption-requests.html', text: 'Adoption Requests' }
-  ];
-
-  // Only admins can see Add Pet
-  if (user.role === 'admin') {
-    links.splice(1, 0, { href: 'add-pet.html', text: 'Add Pet' });
-  }
-
-  navLinks.innerHTML = links.map(link => `<a href="${link.href}">${link.text}</a>`).join('');
       // Initialize your existing home.js functionality
       if (typeof window.initializeHome === 'function') {
         window.initializeHome();
@@ -439,11 +325,3 @@ admins.forEach(admin => {
 
     // Make chat system globally available
     window.ChatSystem = ChatSystem;
-  </script>
-
-  <script type="module">
-    import './js/home.js';
-  </script>
-
-</body>
-</html>

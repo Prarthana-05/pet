@@ -19,14 +19,14 @@
   <button id="deleteBtn">Delete</button>
 </div>
 
-<script>
+
+
+<script type="module">
   document.getElementById('logoutBtn').addEventListener('click', () => {
     localStorage.removeItem('token');
     window.location.href = 'index.html';
   });
-</script>
-
-<script type="module">
+  
   const API_BASE = 'http://localhost:5000/api';
   const token = localStorage.getItem('token');
   const petId = new URLSearchParams(window.location.search).get('id');
