@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://pet-ylqw.onrender.com';
 const token = localStorage.getItem('token');
 
 if (!token) window.location.href = 'index.html';
@@ -25,7 +25,7 @@ async function fetchPets() {
       card.className = 'pet-card';
 
       card.innerHTML = `
-        <img src="http://localhost:5000/${pet.image}" alt="${pet.name}" style="cursor:pointer;">
+        <img src="https://pet-ylqw.onrender.com/${pet.image}" alt="${pet.name}" style="cursor:pointer;">
         <p><strong>${pet.name}</strong></p>
       `;
 

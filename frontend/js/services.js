@@ -53,7 +53,7 @@ document.getElementById('findVetBtn').addEventListener('click', async () => {
     const userLat = parseFloat(geoData[0].lat);
     const userLon = parseFloat(geoData[0].lon);
 
-    const vetRes = await fetch(`http://localhost:5000/api/vetservices/nearby?lat=${userLat}&lng=${userLon}`);
+    const vetRes = await fetch(`https://pet-ylqw.onrender.com/api/vetservices/nearby?lat=${userLat}&lng=${userLon}`);
     const vets = await vetRes.json();
 
     const resultContainer = document.getElementById('vetResults');

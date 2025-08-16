@@ -16,7 +16,7 @@ form.addEventListener('submit', async (e) => {
   const formData = new FormData(form);
 
   try {
-    const res = await fetch('http://localhost:5000/api/pets', {
+    const res = await fetch('https://pet-ylqw.onrender.com/api/pets', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`

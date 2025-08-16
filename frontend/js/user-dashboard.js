@@ -19,7 +19,7 @@ let selectedPetId = null;
 // Load and display available pets
 async function loadAvailablePets() {
   try {
-    const res = await fetch('http://localhost:5000/api/pets', {
+    const res = await fetch('https://pet-ylqw.onrender.com/api/pets', {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -58,7 +58,7 @@ function displayPets(pets) {
 
   petGrid.innerHTML = pets.map(pet => `
     <div class="pet-card">
-      <img src="http://localhost:5000/${pet.image}" alt="${pet.name}" onerror="this.src='images/default-pet.jpg'">
+      <img src="https://pet-ylqw.onrender.com/${pet.image}" alt="${pet.name}" onerror="this.src='images/default-pet.jpg'">
       <div class="pet-info">
         <h3>${pet.name}</h3>
         <p><strong>Breed:</strong> ${pet.breed}</p>
@@ -99,7 +99,7 @@ document.getElementById('submitAdoptionRequest').addEventListener('click', async
   const user = JSON.parse(localStorage.getItem('user'));
 
   try {
-    const res = await fetch('http://localhost:5000/api/adoption-request', {
+    const res = await fetch('https://pet-ylqw.onrender.com/api/adoption-request', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

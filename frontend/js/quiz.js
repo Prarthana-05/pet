@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://pet-ylqw.onrender.com';
 const token = localStorage.getItem('token');
 const role = localStorage.getItem('role');
 
@@ -74,7 +74,7 @@ function displayPets(pets) {
   pets.forEach(pet => {
     container.innerHTML += `
       <div class="pet-card">
-        <img src="http://localhost:5000/${pet.image}" alt="${pet.name}">
+        <img src="https://pet-ylqw.onrender.com/${pet.image}" alt="${pet.name}">
         <p><strong>${pet.name}</strong> (${pet.breed})</p>
         <p>Age: ${pet.age}</p>
         <p>Status: ${pet.status}</p>

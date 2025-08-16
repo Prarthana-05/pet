@@ -101,7 +101,7 @@
         this.updateConnectionStatus('connecting', 'Connecting...');
 
         try {
-          this.socket = io('http://localhost:5000');
+          this.socket = io('https://pet-ylqw.onrender.com');
 
           this.socket.on('connect', () => {
             console.log('Socket connected:', this.socket.id);
@@ -168,7 +168,7 @@
         
       const token = localStorage.getItem('token'); // or wherever you're storing it
 
-fetch(`/api/chat/${this.currentUser._id}/${this.currentRecipient}`, {
+fetch(`https://pet-ylqw.onrender.com/api/chat/${this.currentUser._id}/${this.currentRecipient}`, {
   method: 'GET',
   headers: {
     'Authorization': `Bearer ${token}`,
@@ -276,7 +276,7 @@ fetch(`/api/chat/${this.currentUser._id}/${this.currentRecipient}`, {
   select.innerHTML = `<option value="">-- Select a recipient --</option>`;
 
   try {
-    const res = await fetch('/api/users'); // your API to get user list
+    const res = await fetch('https://pet-ylqw.onrender.com/api/users'); // your API to get user list
     const users = await res.json();
     console.log(users);
 

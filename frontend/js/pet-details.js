@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://pet-ylqw.onrender.com';
 const token = localStorage.getItem('token');
 const petId = new URLSearchParams(window.location.search).get('id');
 
@@ -49,7 +49,7 @@ async function loadPetDetails() {
     const pet = await res.json();
 
     document.getElementById('petDetailsContainer').innerHTML = `
-      <img src="http://localhost:5000/${pet.image}" alt="${pet.name}">
+      <img src="https://pet-ylqw.onrender.com/${pet.image}" alt="${pet.name}">
       <p><strong>Name:</strong> ${pet.name}</p>
       <p><strong>Breed:</strong> ${pet.breed}</p>
       <p><strong>Age:</strong> ${pet.age}</p>

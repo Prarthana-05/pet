@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
-    const response = await fetch('http://localhost:5000/api/adoption-requests', {
+    const response = await fetch('https://pet-ylqw.onrender.com/api/adoption-requests', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,

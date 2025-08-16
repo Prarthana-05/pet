@@ -100,7 +100,7 @@
         this.updateConnectionStatus('connecting', 'Connecting...');
 
         try {
-          this.socket = io('http://localhost:5000');
+          this.socket = io('https://pet-ylqw.onrender.com');
 
           this.socket.on('connect', () => {
             console.log('Socket connected:', this.socket.id);
@@ -164,7 +164,7 @@
 
         console.log(`Loading chat history between ${this.currentUser._id} and ${this.currentRecipient}`);
         
-        fetch(`/api/chat/${this.currentUser._id}/${this.currentRecipient}`)
+        fetch(`https://pet-ylqw.onrender.com/api/chat/${this.currentUser._id}/${this.currentRecipient}`)
           .then(res => {
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             return res.json();
