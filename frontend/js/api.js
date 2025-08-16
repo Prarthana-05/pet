@@ -1,7 +1,7 @@
 const API_BASE = 'https://pet-ylqw.onrender.com';
 
 export const registerUser = async (email, name, password) => {
-  const res = await fetch(`${API_BASE}/auth/register`, {
+  const res = await fetch(`${API_BASE}/api/auth/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, name, password })
