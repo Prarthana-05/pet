@@ -47,7 +47,7 @@ document.getElementById('quizForm').addEventListener('submit', async function (e
   const formData = Object.fromEntries(new FormData(this).entries());
 
   try {
-    const res = await fetch(`${API_BASE}/pets/quiz-recommendation`, {
+    const res = await fetch(`${API_BASE}/api/pets/quiz-recommendation`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
