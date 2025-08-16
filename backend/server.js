@@ -1,37 +1,36 @@
+// server.js
 const express = require("express");
 const app = express();
-
-const cors = require("cors");
+require('dotenv').config();
 const path = require('path');
-const connectDB = require('./config/db');
+const cors = require("cors");
 
+// ✅ Database
+const connectDB = require('./config/db'); // Only call this once
+connectDB();
 
-const User = require('./models/User'); // ✅ Ensure correct path
-const Pet = require('./models/Pet'); // or whatever folder Pet.js is in
-
-const http = require('http');
-const socketIo = require('socket.io');
-
+// ✅ Models
+const User = require('./models/User');
+const Pet = require('./models/Pet');
 const ChatMessage = require('./models/ChatMessage');
 
+// ✅ HTTP & Socket.IO
+const http = require('http');
+const socketIo = require('socket.io');
 const server = http.createServer(app);
-
-const authRoutes = require('./routes/authRoutes');
-const petRoutes = require('./routes/petRoutes');
-const vetRoutes = require('./routes/vetRoutes');
-const adoptionRequestRoutes = require('./routes/adoptionRequest');
-const chatRoutes = require('./routes/chatRoutes');
-const authMiddleware = require('./middleware/authMiddleware');
-const adoption = require("./routes/adoptionRequestRoutes");
 
 // ✅ Middleware
 app.use(cors());
 app.use(express.json());
 
-// ✅ Database
-connectDB();
+// ✅ Routes
+const authRoutes = require('./routes/authRoutes');
+const petRoutes = require('./routes/petRoutes');
+const vetRoutes = require('./routes/vetRoutes');
+const adoptionRequestRoutes = require('./routes/adoptionRequest');
+const adoption = require("./routes/adoptionRequestRoutes");
+const chatRoutes = require('./routes/chatRoutes');
 
-// ✅ API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/pets', petRoutes);
 app.use('/api/vetservices', vetRoutes);
@@ -39,20 +38,16 @@ app.use('/api/adoption-request', adoptionRequestRoutes);
 app.use('/api/adoption-requests', adoption);
 app.use('/api', chatRoutes);
 
-
-
-
+// ✅ Example API route
 app.get('/api/users', async (req, res) => {
   try {
-    const users = await User.find({}, 'name _id role'); // ✅ Only fetch needed fields
-    console.log('Fetched users:', users); // ✅ Check if this runs
-    res.json(users); // ✅ This must return an array
+    const users = await User.find({}, 'name _id role');
+    res.json(users);
   } catch (error) {
-    console.error('Error in /api/users:', error); // ✅ Log the real issue
+    console.error('Error in /api/users:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });
-
 
 // ✅ Static Files
 app.use('/pet-images', express.static(path.join(__dirname, 'pet-images')));
@@ -74,27 +69,23 @@ io.on('connection', (socket) => {
 
   // Chat message handler
   socket.on('chat message', async (data) => {
-  console.log('Saving message:', data);
-
-  try {
-    const savedMessage = await ChatMessage.create({
-      senderId: data.senderId,
-      recipientId: data.recipientId,
-      senderRole: data.senderRole,
-      message: data.message,
-      createdAt: new Date() // Let Mongoose handle this instead if you want
-    });
-
-    console.log('✅ Message saved:', savedMessage);
-    io.to(data.recipientId).emit('chat message', savedMessage);
-  } catch (err) {
-    console.error('❌ Error saving message:', err);
-  }
-});
-
+    try {
+      const savedMessage = await ChatMessage.create({
+        senderId: data.senderId,
+        recipientId: data.recipientId,
+        senderRole: data.senderRole,
+        message: data.message,
+        createdAt: new Date()
+      });
+      io.to(data.recipientId).emit('chat message', savedMessage);
+    } catch (err) {
+      console.error('Error saving message:', err);
+    }
+  });
 });
 
 // ✅ Start Server
-server.listen(5000, () => {
-  console.log("Server running on http://localhost:5000");
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
