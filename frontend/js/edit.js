@@ -1,4 +1,4 @@
-const API_BASE = 'https://pet-ylqw.onrender.com';
+const API_BASE = 'https://pet-ylqw.onrender.com/api';
     const token = localStorage.getItem('token');
     const petId = new URLSearchParams(window.location.search).get('id');
 
