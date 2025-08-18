@@ -746,6 +746,44 @@ button:hover {
 
     /* Mobile responsiveness */
     @media (max-width: 768px) {
+
+      .pet-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  /* Pet Card adjustments */
+  .pet-card {
+    padding: 0.8rem;
+    max-width: 100%;
+  }
+
+  .pet-card img {
+    height: 180px; /* smaller height for mobile */
+  }
+
+  .pet-card p,
+  .pet-card h3 {
+    font-size: 14px; /* smaller font */
+  }
+
+  .request-btn {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  /* Navbar adjustments */
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
       .chat-container {
         width: 95%;
         height: 90vh;
