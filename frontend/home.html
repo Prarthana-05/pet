@@ -196,7 +196,7 @@
         this.updateConnectionStatus('connecting', 'Connecting...');
 
         try {
-          this.socket = io('http://localhost:5000');
+          this.socket = io('https://pet-ylqw.onrender.com');
 
           this.socket.on('connect', () => {
             console.log('Socket connected:', this.socket.id);
@@ -447,3 +447,5 @@ admins.forEach(admin => {
 
 </body>
 </html>
+
+
