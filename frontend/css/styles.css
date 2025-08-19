@@ -797,3 +797,57 @@ button:hover {
       }
     }
   
+/* Hide the checkbox */
+#nav-toggle {
+  display: none;
+}
+
+/* Hamburger icon */
+.hamburger {
+  display: none; /* only show on mobile */
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+
+  .nav-links {
+    display: none;           /* hide links by default */
+    flex-direction: column;  /* vertical dropdown */
+    width: 100%;
+    background-color: #6ba5c0;
+    position: absolute;
+    top: 60px;               /* below navbar */
+    left: 0;
+    padding: 1rem 0;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+  }
+
+  /* Show hamburger on mobile */
+  .hamburger {
+    display: block;
+  }
+
+  /* Toggle nav links when checkbox checked */
+  #nav-toggle:checked + .hamburger + .nav-links {
+    display: flex;
+  }
+
+  /* Optional: move logout button below links */
+  #logoutBtn {
+    margin-top: 10px;
+  }
+
+  .navbar {
+    position: relative;
+    flex-wrap: wrap;
+  }
+}
