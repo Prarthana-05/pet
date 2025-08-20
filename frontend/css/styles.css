@@ -821,23 +821,24 @@ button:hover {
 
   .navbar {
     display: flex;
-    justify-content: flex-start; /* align items to left */
+    justify-content: flex-start;
     align-items: center;
     padding: 1rem 1.5rem;
     position: relative;
-    gap: 10px; /* space between hamburger and title */
+    gap: 10px;
+    flex-wrap: nowrap;
   }
 
   .navbar h1 {
     display: block; 
     font-size: 1.2rem;
     margin: 0;
-    order: 2; /* move title after hamburger */
+    order: 2;
   }
 
   .hamburger {
     display: block;
-    order: 1; /* hamburger comes first */
+    order: 1;
   }
 
   .nav-links {
