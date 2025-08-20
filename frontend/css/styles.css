@@ -819,20 +819,34 @@ button:hover {
 /* Mobile responsiveness */
 @media (max-width: 768px) {
 
+  .navbar {
+    display: flex;
+    justify-content: flex-start; /* align items to left */
+    align-items: center;
+    padding: 1rem 1.5rem;
+    position: relative;
+    gap: 10px; /* space between hamburger and title */
+  }
+
   .navbar h1 {
-    /* Make "Happy Paws" visible on mobile */
     display: block; 
     font-size: 1.2rem;
     margin: 0;
+    order: 2; /* move title after hamburger */
+  }
+
+  .hamburger {
+    display: block;
+    order: 1; /* hamburger comes first */
   }
 
   .nav-links {
-    display: none;           /* hide links by default */
-    flex-direction: column;  /* vertical dropdown */
+    display: none;           
+    flex-direction: column;  
     width: 100%;
     background-color: #6ba5c0;
     position: absolute;
-    top: 60px;               /* below navbar */
+    top: 60px;               
     left: 0;
     padding: 1rem 0;
   }
@@ -843,23 +857,11 @@ button:hover {
     color: white;
   }
 
-  /* Show hamburger on mobile */
-  .hamburger {
-    display: block;
-  }
-
-  /* Toggle nav links when checkbox checked */
   #nav-toggle:checked + .hamburger + .nav-links {
     display: flex;
   }
 
-  /* Optional: move logout button below links */
   #logoutBtn {
     margin-top: 10px;
-  }
-
-  .navbar {
-    position: relative;
-    flex-wrap: wrap;
   }
 }
