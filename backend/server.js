@@ -23,7 +23,8 @@ const server = http.createServer(app);
 app.use(cors({
   origin: [
     "https://pet-kwivz3hi4-prarthana-05s-projects.vercel.app",
-    "https://prarthanaa-portfolio.netlify.app"
+    "https://prarthanaa-portfolio.netlify.app",
+    "https://pet-nine-weld.vercel.app"
   ],
   methods: ['GET','POST','PUT','DELETE'],
   credentials: true // if you plan to send cookies or authorization headers
