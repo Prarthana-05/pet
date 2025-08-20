@@ -811,8 +811,20 @@ button:hover {
   margin-right: 10px;
 }
 
+
+.navbar h1 {
+  display: none;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
+
+  .navbar h1 {
+    /* Make "Happy Paws" visible on mobile */
+    display: block; 
+    font-size: 1.2rem;
+    margin: 0;
+  }
 
   .nav-links {
     display: none;           /* hide links by default */
