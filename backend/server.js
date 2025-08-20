@@ -21,9 +21,14 @@ const server = http.createServer(app);
 
 // ✅ Middleware
 app.use(cors({
-  origin: '*', // or your frontend domain
-  methods: ['GET','POST','PUT','DELETE']
+  origin: [
+    "https://pet-kwivz3hi4-prarthana-05s-projects.vercel.app",
+    "https://prarthanaa-portfolio.netlify.app"
+  ],
+  methods: ['GET','POST','PUT','DELETE'],
+  credentials: true // if you plan to send cookies or authorization headers
 }));
+
 app.use(express.json());
 
 // ✅ Routes
