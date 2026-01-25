@@ -1191,6 +1191,9 @@ button:hover {
   transition: 0.3s;
 }
 
+
+
+
 .landing-page .btn-primary:hover {
   background-color: #5794af;
   transform: translateY(-2px);
@@ -1212,4 +1215,17 @@ button:hover {
     background-color: white; /* IMPORTANT */
     border-radius: 2px;
   }
+}
+
+
+
+.auth-page {
+  display: block; /* or remove flex */
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* or any height you want */
 }
