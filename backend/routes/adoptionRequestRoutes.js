@@ -77,33 +77,43 @@ router.get("/user/:id", verifyToken, async (req, res) => {
 });
 
 // 4️⃣ Admin approves/rejects a request
+// routes/adoptionRequestRoutes.js
+
 // 4️⃣ Admin approves/rejects a request
 router.put("/:id", verifyToken, async (req, res) => {
   try {
+    // 1. Security Check: Admin Only
     if (req.user.role !== "admin") return res.status(403).json({ msg: "Access denied" });
+
+    // 2. State Check: Prevent changing a finalized decision
+    const existingRequest = await AdoptionRequest.findById(req.params.id);
+    if (!existingRequest) return res.status(404).json({ msg: "Request not found" });
+    
+    if (existingRequest.status.toLowerCase() !== 'pending') {
+      return res.status(400).json({ msg: "Decision already finalized. Cannot change status." });
+    }
 
     const { status, adminResponse } = req.body;
     
-    // 1. Update the adoption request itself
+    // 3. Update the targeted request
     const request = await AdoptionRequest.findByIdAndUpdate(
       req.params.id,
       { status, adminResponse },
       { new: true }
     );
 
-    // 2. TRIGGER AUTOMATIC UPDATES
-    // Use .toLowerCase() to make it case-insensitive just in case
+    // 4. AUTOMATIC UPDATES ON APPROVAL
     if (status.toLowerCase() === "approved") {
       
       // A. Automatically mark Pet as 'Adopted' in the Pet model
       await Pet.findByIdAndUpdate(request.petId, { status: 'Adopted' });
 
-      // B. Automatically reject all other pending users for this pet
+      // B. Automatically reject all other pending users for this specific pet
       await AdoptionRequest.updateMany(
         { 
-          petId: request.petId,           
-          _id: { $ne: req.params.id },    
-          status: "Pending"               
+          petId: request.petId,           // Same pet
+          _id: { $ne: req.params.id },    // But not the one we just approved
+          status: "Pending"               // Only affect those still waiting
         },
         { 
           status: "Rejected", 

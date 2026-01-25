@@ -82,8 +82,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       const div = document.createElement('div');
       div.classList.add('request-card');
 
-      // Ensure _id is a string
       const requestId = req._id?.toString() || req.id;
+      
+      // Determine if the request still needs a decision
+      const isPending = req.status.toLowerCase() === 'pending';
 
       div.innerHTML = `
         <h3>${req.petId?.name || 'Unnamed Pet'}</h3>
@@ -91,43 +93,50 @@ document.addEventListener('DOMContentLoaded', async () => {
         <p><strong>Email:</strong> ${req.userEmail}</p>
         <p><strong>Status:</strong> <span class="status-text">${req.status}</span></p>
         <p><strong>Admin Response:</strong> <span class="admin-response">${req.adminResponse || 'No response yet'}</span></p>
-        <textarea class="admin-message" placeholder="Write a message to the user..."></textarea>
-        <div class="admin-actions">
-          <button class="approve-btn">Approve</button>
-          <button class="reject-btn">Reject</button>
-        </div>
+        
+        ${isPending ? `
+          <textarea class="admin-message" placeholder="Write a message to the user..."></textarea>
+          <div class="admin-actions">
+            <button class="approve-btn">Approve</button>
+            <button class="reject-btn">Reject</button>
+          </div>
+        ` : `
+          <p style="margin-top: 15px; color: #666; font-style: italic; border-top: 1px solid #eee; pt-2;">
+            Decision finalized. Actions locked.
+          </p>
+        `}
       `;
 
       container.appendChild(div);
 
-      // Button elements
-      const approveBtn = div.querySelector('.approve-btn');
-      const rejectBtn = div.querySelector('.reject-btn');
-      const messageInput = div.querySelector('.admin-message');
-      const adminResponseSpan = div.querySelector('.admin-response');
-      const statusText = div.querySelector('.status-text');
+      // Only attach event listeners if the buttons exist (status was Pending)
+      if (isPending) {
+        const approveBtn = div.querySelector('.approve-btn');
+        const rejectBtn = div.querySelector('.reject-btn');
+        const messageInput = div.querySelector('.admin-message');
 
-      // Approve click
-      approveBtn.addEventListener('click', async () => {
-        if (!requestId) return alert('Request ID missing!');
-        const msg = messageInput.value || 'Approved';
-        const updated = await updateRequest(requestId, 'approved', msg);
-        if (updated) {
-          statusText.textContent = 'approved';
-          adminResponseSpan.textContent = msg;
-        }
-      });
+        // Approve click
+        approveBtn.addEventListener('click', async () => {
+          if (!requestId) return alert('Request ID missing!');
+          const msg = messageInput.value || 'Approved';
+          const updated = await updateRequest(requestId, 'Approved', msg);
+          if (updated) {
+            // Refresh to hide the buttons and update UI state
+            location.reload();
+          }
+        });
 
-      // Reject click
-      rejectBtn.addEventListener('click', async () => {
-        if (!requestId) return alert('Request ID missing!');
-        const msg = messageInput.value || 'Rejected';
-        const updated = await updateRequest(requestId, 'rejected', msg);
-        if (updated) {
-          statusText.textContent = 'rejected';
-          adminResponseSpan.textContent = msg;
-        }
-      });
+        // Reject click
+        rejectBtn.addEventListener('click', async () => {
+          if (!requestId) return alert('Request ID missing!');
+          const msg = messageInput.value || 'Rejected';
+          const updated = await updateRequest(requestId, 'Rejected', msg);
+          if (updated) {
+            // Refresh to hide the buttons and update UI state
+            location.reload();
+          }
+        });
+      }
     });
 
   } catch (err) {
@@ -136,7 +145,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
-// Update request function
+// Update request function - Core logic remains unchanged
 async function updateRequest(requestId, status, adminResponse) {
   const token = localStorage.getItem('token');
   try {
