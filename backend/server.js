@@ -28,7 +28,8 @@ app.use(cors({
     "https://prarthanaa-portfolio.netlify.app",
     "https://pet-nine-weld.vercel.app"
   ],
-  methods: ['GET','POST','PUT','DELETE'],
+  // methods: ['GET','POST','PUT','DELETE'],
+   methods: ['GET','POST','PUT','DELETE','PATCH'], // <-- add PATCH here
   credentials: true // if you plan to send cookies or authorization headers
 }));
 
