@@ -1219,13 +1219,59 @@ button:hover {
 
 
 
-.auth-page {
-  display: block; /* or remove flex */
+/* --- Vertical Centering for Auth Page Only --- */
+body.auth-page {
+    display: flex;
+    flex-direction: column; /* Stacks nav and form vertically */
+    min-height: 100vh;      /* Ensures full viewport height */
+    margin: 0;
 }
 
-.auth-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80vh; /* or any height you want */
+/* Specific centering for the container on this page */
+.auth-page .auth-container {
+    flex: 1;                /* Occupies all space below navbar */
+    display: flex;
+    justify-content: center; /* Vertical center */
+    align-items: center;     /* Horizontal center */
+    padding: 20px;
+}
+
+/* Ensure the login/register sections look like cards */
+.auth-page #loginFormSection, 
+.auth-page #registerFormSection {
+    background: #fff;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;        /* Prevents box from being too wide */
+}
+
+/* --- Specific Mobile Hamburger Fix for Auth Page --- */
+@media (max-width: 768px) {
+    /* Forces the nav links to hide and stack correctly */
+    .auth-page .navbar .nav-links {
+        display: none !important; /* Overrides global display rules */
+        position: absolute;
+        top: 60px; /* Adjust based on your navbar height */
+        left: 0;
+        width: 100%;
+        background-color: #6ba5c0; /* Matches your theme */
+        flex-direction: column;
+        z-index: 1000;
+        padding: 1rem 0;
+    }
+
+    /* Only shows when the hamburger toggle is active */
+    .auth-page .navbar .nav-links.active {
+        display: flex !important;
+    }
+
+    /* Ensures the hamburger is visible on this page */
+    .auth-page .navbar .hamburger {
+        display: flex !important;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+    }
 }
