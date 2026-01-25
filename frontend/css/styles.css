@@ -1293,32 +1293,3 @@ button:hover {
 }
 
 
-@media (max-width: 768px) {
-  /* 1. Default hidden state for mobile */
-  .navbar .nav-links, 
-  .navbar .auth-nav {
-    display: none !important; 
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background-color: #6ba5c0;
-    flex-direction: column;
-    padding: 1.5rem 0;
-    z-index: 1000;
-  }
-
-  /* 2. SPECIFIC active state to force it to open */
-  /* Use the exact ID of your UL to ensure it opens */
-  #navLinks.active {
-    display: flex !important;
-  }
-
-  /* 3. Ensure hamburger stays visible */
-  .hamburger {
-    display: flex !important;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-  }
-}
