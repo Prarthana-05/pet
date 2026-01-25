@@ -77,31 +77,44 @@ router.get("/user/:id", verifyToken, async (req, res) => {
 });
 
 // 4️⃣ Admin approves/rejects a request
+// 4️⃣ Admin approves/rejects a request
 router.put("/:id", verifyToken, async (req, res) => {
   try {
     if (req.user.role !== "admin") return res.status(403).json({ msg: "Access denied" });
 
     const { status, adminResponse } = req.body;
+    
+    // 1. Update the adoption request itself
     const request = await AdoptionRequest.findByIdAndUpdate(
       req.params.id,
       { status, adminResponse },
       { new: true }
     );
 
-    if (status === "Approved") {
-      await Pet.findByIdAndUpdate(request.petId, { adopted: true });
+    // 2. TRIGGER AUTOMATIC UPDATES
+    // Use .toLowerCase() to make it case-insensitive just in case
+    if (status.toLowerCase() === "approved") {
+      
+      // A. Automatically mark Pet as 'Adopted' in the Pet model
+      await Pet.findByIdAndUpdate(request.petId, { status: 'Adopted' });
 
+      // B. Automatically reject all other pending users for this pet
       await AdoptionRequest.updateMany(
-        { petId: request.petId, _id: { $ne: req.params.id } },
-        {
-          status: "Rejected",
-          adminResponse: "Pet already adopted by another user"
+        { 
+          petId: request.petId,           
+          _id: { $ne: req.params.id },    
+          status: "Pending"               
+        },
+        { 
+          status: "Rejected", 
+          adminResponse: "This pet has been adopted by another user." 
         }
       );
     }
 
     res.json(request);
   } catch (err) {
+    console.error(err);
     res.status(500).json({ msg: "Server error" });
   }
 });
