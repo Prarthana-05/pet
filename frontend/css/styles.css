@@ -1320,6 +1320,7 @@ body.auth-page {
 }
 
 /* --- Optimized Navbar Fix --- */
+@media (max-width: 768px) {
 .auth-page .navbar {
     width: 100%;
     display: flex;
@@ -1347,6 +1348,8 @@ body.auth-page {
     gap: 6px;
     cursor: pointer;
     order: -1;                  /* Moves hamburger BEFORE the logo if desired */
+}
+
 }
 
 /* --- Mobile Specifics --- */
