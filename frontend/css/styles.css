@@ -1291,3 +1291,39 @@ button:hover {
 .auth-nav a:hover {
     color: #e0f2f1;                 /* Subtle hover effect */
 }
+
+
+/* --- Desktop: No Scroll --- */
+@media (min-width: 769px) {
+  body.landing-page {
+    height: 100vh;
+    overflow: hidden; 
+  }
+}
+
+/* --- Mobile: Fixed Navbar & Hidden Menu --- */
+@media (max-width: 768px) {
+  /* 1. Ensure the nav list is HIDDEN by default */
+  .nav-links, .auth-nav {
+    display: none !important; /* Prevents menu being open on load */
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #6ba5c0; /* Your theme color */
+    padding: 1.5rem 0;
+    z-index: 1000;
+  }
+
+  /* 2. ONLY show when 'active' class is added */
+  .nav-links.active, .auth-nav.active {
+    display: flex !important;
+  }
+
+  /* 3. Hamburger Visibility */
+  .hamburger {
+    display: flex !important;
+    cursor: pointer;
+  }
+}
