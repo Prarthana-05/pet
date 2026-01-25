@@ -1318,3 +1318,47 @@ body.auth-page {
         background-color: white;
     }
 }
+
+/* --- Optimized Navbar Fix --- */
+.auth-page .navbar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* Aligns items to the left */
+    align-items: center;        /* Vertically centers items */
+    background-color: #6ba5c0;
+    padding: 0 5%;              /* Left and right inner spacing */
+    height: 90px;               /* Increased size from 70px */
+    box-sizing: border-box;
+    gap: 20px;                  /* Space between logo and hamburger */
+}
+
+/* --- Bold Logo on Left --- */
+.auth-page .navbar .logo {
+    color: white;
+    font-size: 2rem;            /* Increased size for better visibility */
+    font-weight: bold;
+    margin: 0;                  /* Removes default margins */
+}
+
+/* --- Hamburger on Left --- */
+.auth-page .navbar .hamburger {
+    display: flex !important;   /* Ensures it is visible */
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    order: -1;                  /* Moves hamburger BEFORE the logo if desired */
+}
+
+/* --- Mobile Specifics --- */
+@media (max-width: 768px) {
+    .auth-page .navbar {
+        height: 100px;          /* Even larger navbar for mobile tap targets */
+        padding-left: 20px;
+    }
+
+    .auth-page .hamburger span {
+        width: 30px;            /* Slightly larger icon for the larger bar */
+        height: 4px;
+        background-color: white;
+    }
+}
