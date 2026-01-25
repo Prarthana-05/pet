@@ -22,6 +22,8 @@ const server = http.createServer(app);
 // ✅ Middleware
 app.use(cors({
   origin: [
+     "http://localhost:3000",
+     "http://localhost:5000",
     "https://pet-kwivz3hi4-prarthana-05s-projects.vercel.app",
     "https://prarthanaa-portfolio.netlify.app",
     "https://pet-nine-weld.vercel.app"
