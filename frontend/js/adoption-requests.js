@@ -53,7 +53,6 @@
 // });
 
 
-
 // Admin Adoption Requests JS
 document.addEventListener('DOMContentLoaded', async () => {
   const token = localStorage.getItem('token');
@@ -83,7 +82,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       const div = document.createElement('div');
       div.classList.add('request-card');
 
-      // Card content with status, admin response, message, and buttons
+      // Ensure _id is a string
+      const requestId = req._id?.toString() || req.id;
+
       div.innerHTML = `
         <h3>${req.petId?.name || 'Unnamed Pet'}</h3>
         <p><strong>User:</strong> ${req.userName}</p>
@@ -99,25 +100,33 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       container.appendChild(div);
 
-      // Get elements for button actions
+      // Button elements
       const approveBtn = div.querySelector('.approve-btn');
       const rejectBtn = div.querySelector('.reject-btn');
       const messageInput = div.querySelector('.admin-message');
       const adminResponseSpan = div.querySelector('.admin-response');
       const statusText = div.querySelector('.status-text');
 
-      // Approve button click
+      // Approve click
       approveBtn.addEventListener('click', async () => {
-        await updateRequest(req._id, 'approved', messageInput.value);
-        statusText.textContent = 'approved';
-        adminResponseSpan.textContent = messageInput.value || 'Approved';
+        if (!requestId) return alert('Request ID missing!');
+        const msg = messageInput.value || 'Approved';
+        const updated = await updateRequest(requestId, 'approved', msg);
+        if (updated) {
+          statusText.textContent = 'approved';
+          adminResponseSpan.textContent = msg;
+        }
       });
 
-      // Reject button click
+      // Reject click
       rejectBtn.addEventListener('click', async () => {
-        await updateRequest(req._id, 'rejected', messageInput.value);
-        statusText.textContent = 'rejected';
-        adminResponseSpan.textContent = messageInput.value || 'Rejected';
+        if (!requestId) return alert('Request ID missing!');
+        const msg = messageInput.value || 'Rejected';
+        const updated = await updateRequest(requestId, 'rejected', msg);
+        if (updated) {
+          statusText.textContent = 'rejected';
+          adminResponseSpan.textContent = msg;
+        }
       });
     });
 
@@ -127,7 +136,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
-// Function to update request status and admin response
+// Update request function
 async function updateRequest(requestId, status, adminResponse) {
   const token = localStorage.getItem('token');
   try {
@@ -140,11 +149,16 @@ async function updateRequest(requestId, status, adminResponse) {
       body: JSON.stringify({ status, adminResponse })
     });
 
-    if (!res.ok) throw new Error('Failed to update request');
+    if (!res.ok) {
+      console.error('Failed to update:', res.status, await res.text());
+      throw new Error('Failed to update request');
+    }
+
     return await res.json();
   } catch (err) {
     console.error(err);
     alert('Error updating request');
+    return null;
   }
 }
 
