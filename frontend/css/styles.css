@@ -1167,3 +1167,20 @@ button:hover {
   transform: translateY(-2px);
 }
 
+
+@media (max-width: 768px) {
+
+  .landing-page .hamburger {
+    display: flex !important;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .landing-page .hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white; /* IMPORTANT */
+    border-radius: 2px;
+  }
+}
