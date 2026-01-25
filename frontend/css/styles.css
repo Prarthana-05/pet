@@ -1219,59 +1219,80 @@ button:hover {
 
 
 
-/* --- Vertical Centering for Auth Page Only --- */
+/* --- Global Auth Page Fix --- */
 body.auth-page {
-    display: flex;
-    flex-direction: column; /* Stacks nav and form vertically */
-    min-height: 100vh;      /* Ensures full viewport height */
     margin: 0;
-}
-
-/* Specific centering for the container on this page */
-.auth-page .auth-container {
-    flex: 1;                /* Occupies all space below navbar */
+    padding: 0;
     display: flex;
-    justify-content: center; /* Vertical center */
-    align-items: center;     /* Horizontal center */
-    padding: 20px;
+    flex-direction: column; /* Stacks Nav on top of Container */
+    min-height: 100vh;      /* Use min-height so content can grow if needed */
+    background-color: #f4f7f6;
+    overflow-x: hidden;
 }
 
-/* Ensure the login/register sections look like cards */
-.auth-page #loginFormSection, 
-.auth-page #registerFormSection {
-    background: #fff;
-    padding: 35px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+/* --- Full Width Navbar --- */
+.auth-page .navbar {
+    width: 100%;            /* Ensure it spans full width */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #6ba5c0;
+    padding: 0 5%;          /* Side padding for branding/links */
+    height: 70px;
+    box-sizing: border-box;
+    flex-shrink: 0;         /* Prevent navbar from squashing */
+}
+
+/* --- Centered Login Section --- */
+.auth-page .auth-container {
+    flex-grow: 1;           /* Takes up all remaining screen height */
+    display: flex;
+    justify-content: center; /* Vertical centering */
+    align-items: center;     /* Horizontal centering */
     width: 100%;
-    max-width: 400px;        /* Prevents box from being too wide */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-/* --- Specific Mobile Hamburger Fix for Auth Page --- */
+/* --- Form Card Styling --- */
+#loginFormSection, #registerFormSection {
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;        /* Keeps the card professional on big screens */
+}
+
+/* --- Mobile Responsiveness (Hamburger & Center) --- */
 @media (max-width: 768px) {
-    /* Forces the nav links to hide and stack correctly */
-    .auth-page .navbar .nav-links {
-        display: none !important; /* Overrides global display rules */
+    .auth-page .nav-links {
+        display: none !important; /* Hidden by default */
         position: absolute;
-        top: 60px; /* Adjust based on your navbar height */
+        top: 70px;
         left: 0;
         width: 100%;
-        background-color: #6ba5c0; /* Matches your theme */
+        background-color: #6ba5c0;
         flex-direction: column;
-        z-index: 1000;
         padding: 1rem 0;
+        z-index: 1000;
     }
 
-    /* Only shows when the hamburger toggle is active */
-    .auth-page .navbar .nav-links.active {
+    /* Shown when 'active' class is toggled by JS */
+    .auth-page .nav-links.active {
         display: flex !important;
     }
 
-    /* Ensures the hamburger is visible on this page */
-    .auth-page .navbar .hamburger {
-        display: flex !important;
+    .auth-page .hamburger {
+        display: flex !important; /* Show icon */
         flex-direction: column;
         gap: 5px;
         cursor: pointer;
+    }
+
+    .auth-page .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: white;
     }
 }
