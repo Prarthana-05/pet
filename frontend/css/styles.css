@@ -851,3 +851,47 @@ button:hover {
     flex-wrap: wrap;
   }
 }
+
+
+
+
+#requestsContainer {
+  display: flex;
+  flex-wrap: wrap; /* Allows cards to drop to the next line */
+  gap: 20px;       /* Adds space between the cards */
+  padding: 20px;
+  justify-content: flex-start; /* Aligns items to the left */
+}
+
+
+.request-card {
+  flex: 0 1 calc(33.333% - 20px); /* 3 cards per row, accounting for gap */
+  min-width: 300px;               /* Prevents them from getting too skinny */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;         /* Content inside the card stays vertical */
+}
+
+/* Make textareas and buttons look better inside the horizontal cards */
+.admin-message {
+  width: 100%;
+  margin: 10px 0;
+  resize: vertical;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto; /* Pushes buttons to the bottom of the card */
+}
+
+/* Responsive: 1 card per row on small screens */
+@media (max-width: 768px) {
+  .request-card {
+    flex: 1 1 100%;
+  }
+}
