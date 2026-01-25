@@ -838,40 +838,74 @@ button:hover {
 
 
 
-/* Update the container to be a flexible horizontal row */
-#requests-container {
+/* Container for Admin Dashboard */
+#requestsContainer {
   display: flex !important;
   flex-direction: row;
-  flex-wrap: wrap;       /* Allows cards to wrap to the next line on small screens */
+  flex-wrap: wrap; 
   gap: 20px;
   padding: 20px;
-  width: 100%;           /* Uses the full screen width */
-  height: auto;          /* Removes the fixed height restriction */
-  justify-content: flex-start; 
+  width: 100%;
+  justify-content: flex-start;
 }
 
-/* Ensure the cards have a consistent horizontal size */
-#requests-container .request-card, 
-#requests-container div[class*="card"] { /* Matches your dynamically created divs */
-  flex: 0 1 300px;       /* Width of 300px per box */
-  background: #fff;
-  border: 1px solid #ddd;
+/* Admin Request Card */
+#requestsContainer .request-card {
+  flex: 0 1 350px;       /* Fixed width for a 'box' look */
+  min-height: 300px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  #requests-container {
-    justify-content: center;
-  }
-  #requests-container .request-card {
-    flex: 1 1 100%;      /* Stacks vertically only on small mobile screens */
-  }
+/* Style for the 'Decision Finalized' text */
+#requestsContainer .request-card em {
+  display: block;
+  margin-top: auto;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  text-align: center;
+  color: #777;
 }
+
+
+
+/* Container for User Adoption History */
+#requests-container {
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: wrap; 
+  gap: 15px;
+  padding: 20px;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+/* User Status Card */
+#requests-container .request-card {
+  flex: 0 1 280px;       /* Slightly smaller width for history cards */
+  background: #ffffff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make pet names stand out in history */
+#requests-container .request-card h3 {
+  color: #388e3c;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+
 
 /* Make textareas and buttons look better inside the horizontal cards */
 .admin-message {
