@@ -838,30 +838,40 @@ button:hover {
 
 
 
-/* Clear, single definition for the container */
-#requestsContainer {
-  display: flex !important; /* Forces Flexbox */
+/* Update the container to be a flexible horizontal row */
+#requests-container {
+  display: flex !important;
   flex-direction: row;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;       /* Allows cards to wrap to the next line on small screens */
   gap: 20px;
   padding: 20px;
-  width: 100%;       /* Ensure it uses the full screen width */
-  height: auto;      /* Remove the 100px height restriction */
-  justify-content: center; 
+  width: 100%;           /* Uses the full screen width */
+  height: auto;          /* Removes the fixed height restriction */
+  justify-content: flex-start; 
 }
 
-/* Ensure the card has space to breathe */
-.request-card {
-  flex: 0 1 350px;   /* Fixed base width of 350px */
+/* Ensure the cards have a consistent horizontal size */
+#requests-container .request-card, 
+#requests-container div[class*="card"] { /* Matches your dynamically created divs */
+  flex: 0 1 300px;       /* Width of 300px per box */
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   display: flex;
   flex-direction: column;
 }
 
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  #requests-container {
+    justify-content: center;
+  }
+  #requests-container .request-card {
+    flex: 1 1 100%;      /* Stacks vertically only on small mobile screens */
+  }
+}
 
 /* Make textareas and buttons look better inside the horizontal cards */
 .admin-message {
