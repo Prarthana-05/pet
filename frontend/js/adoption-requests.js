@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   container.innerHTML = '<p>Loading adoption requests...</p>';
 
   try {
-    const response = await fetch('https://pet-ylqw.onrender.com/api/adoption-requests', {
+    const response = await fetch('https://pet-ylqw.onrender.com/api/adoption-request', {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
