@@ -399,24 +399,7 @@ button:hover {
 }
 
 
-/* Adoption Request Page */
-#requestsContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
 
-/* Individual Request Card */
-/* Smaller Adoption Request Cards */
-#requestsContainer {
-  display: grid;
-  height: 100px;
-  width: 100px;
-  gap: 1rem;
-  margin-top: 2rem;
-  padding: 0 1rem;
-}
 
 /* Compact Request Card */
 .request-card {
@@ -855,26 +838,30 @@ button:hover {
 
 
 
+/* Clear, single definition for the container */
 #requestsContainer {
-  display: flex;
-  flex-wrap: wrap; /* Allows cards to drop to the next line */
-  gap: 20px;       /* Adds space between the cards */
+  display: flex !important; /* Forces Flexbox */
+  flex-direction: row;
+  flex-wrap: wrap; 
+  gap: 20px;
   padding: 20px;
-  justify-content: flex-start; /* Aligns items to the left */
+  width: 100%;       /* Ensure it uses the full screen width */
+  height: auto;      /* Remove the 100px height restriction */
+  justify-content: center; 
 }
 
-
+/* Ensure the card has space to breathe */
 .request-card {
-  flex: 0 1 calc(33.333% - 20px); /* 3 cards per row, accounting for gap */
-  min-width: 300px;               /* Prevents them from getting too skinny */
+  flex: 0 1 350px;   /* Fixed base width of 350px */
   background: #fff;
   border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   display: flex;
-  flex-direction: column;         /* Content inside the card stays vertical */
+  flex-direction: column;
 }
+
 
 /* Make textareas and buttons look better inside the horizontal cards */
 .admin-message {
