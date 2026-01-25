@@ -1066,3 +1066,182 @@ button:hover {
     text-align: center;
   }
 }
+
+
+
+/* ========================
+   LANDING PAGE EXCLUSIVE
+======================== */
+
+/* 1. Global Page Lock for Desktop */
+@media (min-width: 769px) {
+  /* Use specific body class to avoid global impact */
+  body.landing-page {
+    height: 100vh;
+    overflow: hidden; 
+    background-color: #0b0b0b; /* Dark theme for landing */
+  }
+
+  /* Side-by-Side Hero Layout */
+  .landing-page .hero {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: calc(100vh - 70px); /* Fill screen minus navbar height */
+    padding: 0 9%;
+    gap: 6rem;
+  }
+
+  /* Text Area Priority (75%) */
+  .landing-page .hero-content {
+    flex: 3;
+    max-width: 800px;
+    text-align: left;
+  }
+
+  .landing-page .hero-content h1 {
+    font-size: clamp(3rem, 5vw, 4.4rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: #fff;
+  }
+
+  .landing-page .hero-content h1 span {
+    color: #6ba5c0; /* Themed accent color */
+  }
+
+  /* Small Decorative Image (25%) */
+  .landing-page .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .landing-page .hero-image img {
+    width: 300px; /* Small image as requested */
+    height: auto;
+    max-height: 50vh;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(107, 165, 192, 0.2);
+    object-fit: cover;
+  }
+}
+
+/* 2. Mobile Responsive Fixes */
+@media (max-width: 768px) {
+  .landing-page .hero {
+    display: flex;
+    flex-direction: column; /* Stack vertically for phones */
+    padding: 4rem 5%;
+    text-align: center;
+    height: auto;
+  }
+
+  .landing-page .hero-content h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .landing-page .hero-image img {
+    width: 80%;
+    max-width: 300px;
+    margin-top: 3rem;
+  }
+}
+
+/* 3. Landing Specific Button Styles */
+.landing-page .btn-primary {
+  background-color: #6ba5c0;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.landing-page .btn-primary:hover {
+  background-color: #5794af;
+  transform: translateY(-2px);
+}
+
+/* --- Mobile Responsive Navbar (Phones & Tablets) --- */
+@media (max-width: 768px) {
+    /* 1. Navbar Layout Fix */
+    .landing-page .navbar {
+        padding: 1rem 5%;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+    }
+
+    /* 2. Show the Hamburger Icon */
+    .landing-page .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .landing-page .hamburger span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: #ffffff; /* Contrast with blue/dark nav */
+        border-radius: 2px;
+        transition: 0.3s;
+    }
+
+    /* 3. Dropdown Menu Style */
+    .landing-page .auth-nav {
+        display: none; /* Hidden by default */
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #6ba5c0; /* Matches your theme color */
+        flex-direction: column;
+        padding: 2rem 0;
+        gap: 1.5rem;
+        text-align: center;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* 4. Show Menu when 'active' class is added via JS */
+    .landing-page .auth-nav.active {
+        display: flex;
+    }
+
+    .landing-page .auth-nav li {
+        width: 100%;
+    }
+
+    .landing-page .auth-nav a {
+        font-size: 1.2rem;
+        display: block;
+        padding: 0.5rem 0;
+    }
+
+    /* 5. Compact Hero Text for Mobile */
+    .landing-page .hero-content h1 {
+        font-size: 2.2rem; /* Shrink title to fit phone screen */
+        margin-bottom: 1rem;
+    }
+
+    /* 6. Button Stacking */
+    .landing-page .hero-btns {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .landing-page .btn-primary {
+        width: 80%;
+        text-align: center;
+    }
+}
