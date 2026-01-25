@@ -1245,3 +1245,49 @@ button:hover {
         text-align: center;
     }
 }
+
+
+
+/* --- Navbar Container --- */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Pushes Logo to left, Links to right */
+    align-items: center;            /* Vertically centers all items */
+    background-color: #6ba5c0;      /* Your current theme color */
+    padding: 1rem 9%;               /* Standard desktop side-padding */
+    height: 80px;                   /* Fixed height for a professional look */
+}
+
+/* --- Bold and Big Logo --- */
+.navbar .logo {
+    font-size: 2.2rem;              /* Increases size */
+    font-weight: 900;               /* Makes it extra bold */
+    color: white;
+    text-transform: uppercase;      /* Optional: matches Ecosort style */
+    letter-spacing: -1px;           /* Sleek, modern spacing */
+}
+
+/* --- Links Side-by-Side --- */
+.auth-nav, .nav-links {
+    display: flex;                  /* Forces items into a row */
+    list-style: none;               /* Removes the bullet points */
+    gap: 3rem;                      /* Spacing between the links */
+    margin: 0;
+    padding: 0;
+}
+
+.auth-nav li {
+    display: inline-block;          /* Reinforces side-by-side behavior */
+}
+
+.auth-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.auth-nav a:hover {
+    color: #e0f2f1;                 /* Subtle hover effect */
+}
