@@ -1293,37 +1293,32 @@ button:hover {
 }
 
 
-/* --- Desktop: No Scroll --- */
-@media (min-width: 769px) {
-  body.landing-page {
-    height: 100vh;
-    overflow: hidden; 
-  }
-}
-
-/* --- Mobile: Fixed Navbar & Hidden Menu --- */
 @media (max-width: 768px) {
-  /* 1. Ensure the nav list is HIDDEN by default */
-  .nav-links, .auth-nav {
-    display: none !important; /* Prevents menu being open on load */
-    flex-direction: column;
+  /* 1. Default hidden state for mobile */
+  .navbar .nav-links, 
+  .navbar .auth-nav {
+    display: none !important; 
     position: absolute;
     top: 70px;
     left: 0;
     width: 100%;
-    background-color: #6ba5c0; /* Your theme color */
+    background-color: #6ba5c0;
+    flex-direction: column;
     padding: 1.5rem 0;
     z-index: 1000;
   }
 
-  /* 2. ONLY show when 'active' class is added */
-  .nav-links.active, .auth-nav.active {
+  /* 2. SPECIFIC active state to force it to open */
+  /* Use the exact ID of your UL to ensure it opens */
+  #navLinks.active {
     display: flex !important;
   }
 
-  /* 3. Hamburger Visibility */
+  /* 3. Ensure hamburger stays visible */
   .hamburger {
     display: flex !important;
+    flex-direction: column;
+    gap: 5px;
     cursor: pointer;
   }
 }
