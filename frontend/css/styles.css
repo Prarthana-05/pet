@@ -1148,6 +1148,35 @@ button:hover {
     max-width: 300px;
     margin-top: 3rem;
   }
+
+
+   /* Mobile menu hidden by default */
+  .landing-page .nav-links {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: #6ba5c0;
+    flex-direction: column;
+    padding: 1rem 0;
+    z-index: 1000;
+  }
+
+  /* Show menu when active */
+  .landing-page .nav-links.active {
+    display: flex;
+  }
+
+  .landing-page .nav-links li {
+    text-align: center;
+  }
+
+  .landing-page .nav-links a {
+    color: white;
+    padding: 12px 0;
+    display: block;
+  }
 }
 
 /* 3. Landing Specific Button Styles */
