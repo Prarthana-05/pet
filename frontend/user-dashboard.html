@@ -64,6 +64,32 @@ body {
   cursor: pointer;
 }
 
+
+.pet-card {
+    background: white !important; /* */
+    color: #1a1a1a !important;   /* */
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    
+    /* Forces same size for all boxes */
+    width: 300px;                /* Sets a consistent width */
+    min-height: 400px;           /* Ensures a consistent height */
+    display: flex;               /* Makes the card a flex container */
+    flex-direction: column;      /* Stacks content vertically */
+    justify-content: space-between; /* Pushes the button to the bottom */
+}
+
+
+/* Ensures images inside the cards also match */
+.pet-card img {
+    width: 100%;
+    height: 200px;           /* Fixed height */
+    object-fit: cover;       /* Already there ✓ */
+    object-position: center; /* ADD THIS - centers the image */
+    border-radius: 8px;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .navbar {
@@ -124,34 +150,19 @@ body {
   .nav-links a:hover {
     text-decoration: none;     /* Change text to your theme blue */
 }
-}
-
-/* --- Pet Card Styling --- */
-
-/* Ensures images inside the cards also match */
-.pet-card img {
-    width: 100%;
-    height: 200px;           /* Fixed height */
-    object-fit: cover;       /* Already there ✓ */
-    object-position: center; /* ADD THIS - centers the image */
-    border-radius: 8px;
-}
-/* Centering for Large Screens */
-@media (max-width: 768px){
-  h2 {
-     text-align: center;       /* Centers the "All Adoption Requests" title */
-    margin: 2rem 0;             /* Adds spacing above and below the title */
+ 
+  .pet-card {
+    width: 90% !important; /* Takes up most of the screen width */
+    max-width: 350px;       /* Prevents it from getting too wide on tablets */
+    margin: 10px auto;     /* Centers the single card */
   }
 
-  
   .pet-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    padding: 20px;
+    flex-direction: column !important; /* Stacks items vertically */
+    align-items: center !important;    /* Centers the stack */
+  }
 }
-}
+
 </style>
   
 </head>
