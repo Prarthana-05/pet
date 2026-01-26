@@ -5,13 +5,152 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Home | Pet App</title>
   <link rel="stylesheet" href="css/styles.css">
+
+   <style>
+
+  /* --- Desktop Styles --- */
+body {
+  margin: 0;
+  background-color: #0b0b0b;
+  color: white;
+  font-family: sans-serif;
+}
+
+.navbar {
+ background-color: #1a1a1a;
+ color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.navbar .logo {
+    color: #6ba5c0 !important; 
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center; /* THIS LINE FIXES THE ALIGNMENT */
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+#nav-toggle {
+  display: none;
+}
+
+#logoutBtn {
+  background-color: white;
+    color: #6ba5c0;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .navbar {
+    background-color: #1a1a1a !important;
+    display: flex !important;
+    flex-direction: row !important; /* Keep items in one line */
+    justify-content: space-between !important; /* Hamburger left, Logo right */
+    align-items: center !important;
+    height: 70px !important;
+    padding: 0 20px !important;
+  }
+
+  .hamburger {
+    display: block !important;
+    order: 1 !important; /* Forces to the left */
+  }
+
+  .logo {
+    order: 2 !important; /* Forces to the right */
+    margin: 0 !important;
+  }
+
+  /* Vertical Dropdown Styles */
+  .nav-links {
+    display: none; /* Hidden by default */
+    flex-direction: column !important;
+    position: absolute !important;
+    top: 70px !important; /* Directly below the navbar */
+    left: 0 !important;
+    width: 100% !important;
+    background-color: #1a1a1a !important;
+    padding: 1rem 0 !important;
+    z-index: 1000 !important;
+    gap: 0 !important; /* Stack items tightly */
+  }
+
+  /* Show the dropdown when hamburger is clicked */
+  #nav-toggle:checked ~ .nav-links {
+    display: flex !important;
+  }
+
+  /* Style items inside the dropdown */
+  .nav-links a, 
+  .nav-links #logoutBtn {
+    width: 100% !important;
+    padding: 15px 25px !important;
+    text-align: left !important;
+    border-radius: 0 !important; /* Full width look */
+    margin: 0 !important;
+  }
+
+  .nav-links #logoutBtn {
+     background-color: #1a1a1a !important;
+    color: white !important;
+   height: 70px !important;
+  }
+
+  .nav-links a:hover {
+    text-decoration: none;     /* Change text to your theme blue */
+}
+}
+
+/* Centering for Large Screens */
+@media (min-width: 769px) {
+  h2 {
+     text-align: center;       /* Centers the "All Adoption Requests" title */
+    margin: 2rem 0;             /* Adds spacing above and below the title */
+  }
+
+  #requestsContainer {
+    display: flex !important;
+    justify-content: center;    /* Centers the cards horizontally */
+    flex-wrap: wrap;            /* Allows cards to wrap to the next line */
+    gap: 2rem;                  /* Sets even spacing between cards */
+    max-width: 1200px;          /* Optional: Prevents cards from spreading too wide on massive monitors */
+    margin: 0 auto;             /* Centers the entire container on the page */
+    padding: 0 20px 40px;       /* Adds side and bottom padding for breathing room */
+  }
+}
+</style>
   
 </head>
 <body>
 
 
   <nav class="navbar">
-
+<div class="logo">PetAdopt</div>
     <input type="checkbox" id="nav-toggle" />
   <label for="nav-toggle" class="hamburger">&#9776;</label>
     <div class="nav-links">
@@ -20,9 +159,10 @@
     <a href="quiz.html">Pet Compatibility Quiz</a>
     <a href="vet-services.html">Nearby Vet & Services</a>
     <a href="adoption-history.html">Adoption History</a>
-    </div>
-    <button id="logoutBtn">Logout</button>
+     <button id="logoutBtn">Logout</button>
 
+    </div>
+   
   </nav>
 
   <div class="container">
