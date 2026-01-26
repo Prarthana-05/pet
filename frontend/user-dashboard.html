@@ -156,11 +156,9 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     
     /* Forces same size for all boxes */
-    width: 300px;                /* Sets a consistent width */
-    min-height: 400px;           /* Ensures a consistent height */
-    display: flex;               /* Makes the card a flex container */
-    flex-direction: column;      /* Stacks content vertically */
-    justify-content: space-between; /* Pushes the button to the bottom */
+    width: 90% !important; 
+    max-width: 400px; /* Keeps the card from getting too huge on tablets */
+    margin: 15px auto !important; /* Centers the card and adds vertical spacing */
 }
 
   .pet-grid {
