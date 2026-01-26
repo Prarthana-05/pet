@@ -1377,3 +1377,37 @@ body.auth-page {
     display: flex !important;
   }
 }
+
+
+/* Logo styling */
+.navbar .logo {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Desktop: Logo left, Links + Button right */
+@media (min-width: 769px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-links {
+    margin-left: auto;
+    margin-right: 1rem;
+  }
+}
+
+/* Mobile: Logo and hamburger together */
+@media (max-width: 768px) {
+  .navbar .logo {
+    order: 1;
+    margin-left: 10px;
+  }
+  
+  .hamburger {
+    order: 0;
+  }
+}
