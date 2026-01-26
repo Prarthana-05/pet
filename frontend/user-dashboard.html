@@ -143,6 +143,27 @@ body {
     justify-content: space-between; /* Pushes the button to the bottom */
 }
 
+/* Style for the adoption request button inside the cards */
+.pet-card button, 
+#submitAdoptionRequest {
+    background-color: #6ba5c0 !important; /* Signature blue */
+    color: white !important;             /* White text */
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;                  /* Rounded corners */
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;                         /* Makes it full width inside the card */
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for better user experience */
+.pet-card button:hover, 
+#submitAdoptionRequest:hover {
+    background-color: #5794af !important; /* Slightly darker blue on hover */
+}
+
+
 /* Ensures images inside the cards also match */
 .pet-card img {
     width: 100%;
