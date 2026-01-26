@@ -61,6 +61,26 @@ body {
   cursor: pointer;
 }
 
+
+CSS
+/* Specific styling for buttons inside the Adoption Request cards */
+#requestsContainer button {
+    background-color: #6ba5c0 !important; /* Signature blue */
+    color: white !important;             /* White text for contrast */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;                         /* Ensures button fills the card width */
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+#requestsContainer button:hover {
+    background-color: #5794af !important; /* Darker blue on hover */
+}
 /* Mobile */
 @media (max-width: 768px) {
   .navbar {
