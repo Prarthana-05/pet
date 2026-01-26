@@ -1424,21 +1424,23 @@ body.auth-page {
     top: 60px;
     left: 0;
     padding: 1rem 0;
-    z-index: 999; /* Add this */
+    z-index: 999;
+  }
+  
+  .nav-links a {
+    padding: 10px 20px;
+    color: white;
+  }
+  
+  /* Style logout button inside nav-links */
+  .nav-links #logoutBtn {
+    width: calc(100% - 40px);
+    margin: 10px 20px;
+    background-color: white;
+    color: #4CAF50;
   }
   
   #nav-toggle:checked + .hamburger + .nav-links {
     display: flex;
-  }
-  
-  /* Add logout as last link */
-  #nav-toggle:checked ~ #logoutBtn {
-    display: block;
-    position: absolute;
-    top: calc(60px + (number_of_links * 50px)); /* Adjust based on links */
-    left: 0;
-    width: 100%;
-    background-color: #6ba5c0;
-    z-index: 999;
   }
 }
