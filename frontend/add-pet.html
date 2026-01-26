@@ -16,11 +16,12 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #6c7da1 !important; /* Darkest theme background */
+    
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(40deg, #1a1a1a, #93cff1, #fcfcfd);
-    transition: background-position 0.5s ease-in-out;
+    background-color: #1a1a1a;
+    /* background: linear-gradient(40deg, #1a1a1a, #93cff1, #fcfcfd);
+    transition: background-position 0.5s ease-in-out; */
 }
 
 /* 3. Centered Form Container (Matches Login Card Style) */
@@ -31,13 +32,14 @@ body {
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    background: transparent !important; /* REMOVED WHITE BACKGROUND */
 }
 
 #addPetForm {
-    background: white; /* White card for high contrast readability */
+   background: #fff !important; /* REMOVED WHITE BACKGROUND */
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+   
     width: 100%;
     max-width: 450px; /* Slightly wider for multi-input forms */
 }

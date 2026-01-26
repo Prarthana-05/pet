@@ -9,7 +9,8 @@
 
 
 .navbar {
-  background-color: #6ba5c0;
+ background-color: #1a1a1a;
+ color: white;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -18,14 +19,15 @@
 }
 
 .navbar .logo {
-  color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
+    color: #6ba5c0 !important; 
+    font-size: 1.8rem;
+    font-weight: bold;
 }
 
 .nav-links {
   display: flex;
   gap: 1.5rem;
+  align-items: center; /* THIS LINE FIXES THE ALIGNMENT */
 }
 
 .nav-links a {
@@ -47,7 +49,7 @@
 
 #logoutBtn {
   background-color: white;
-  color: #4CAF50;
+    color: #6ba5c0;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 5px;
@@ -57,6 +59,7 @@
 /* Mobile */
 @media (max-width: 768px) {
   .navbar {
+    background-color: #1a1a1a !important;
     display: flex !important;
     flex-direction: row !important; /* Keep items in one line */
     justify-content: space-between !important; /* Hamburger left, Logo right */
@@ -83,7 +86,7 @@
     top: 70px !important; /* Directly below the navbar */
     left: 0 !important;
     width: 100% !important;
-    background-color: #6ba5c0 !important;
+    background-color: #1a1a1a !important;
     padding: 1rem 0 !important;
     z-index: 1000 !important;
     gap: 0 !important; /* Stack items tightly */
@@ -105,10 +108,14 @@
   }
 
   .nav-links #logoutBtn {
-    background-color: rgba(255, 255, 255, 0.2) !important;
+     background-color: #1a1a1a !important;
     color: white !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+   height: 70px !important;
   }
+
+  .nav-links a:hover {
+    text-decoration: none;     /* Change text to your theme blue */
+}
 }
 
 /* Centering for Large Screens */
