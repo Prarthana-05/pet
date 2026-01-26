@@ -1348,3 +1348,32 @@ body.auth-page {
         display: flex !important;   /* Opens menu when toggled */
     }
 }
+
+
+
+/* Default for non-auth pages - hidden by checkbox */
+.nav-links {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  
+  /* Checkbox toggle for non-auth pages */
+  #nav-toggle:checked + .hamburger + .nav-links {
+    display: flex;
+  }
+}
+
+/* Auth page specific - hidden by default, shown with .active class */
+@media (max-width: 768px) {
+  .auth-page .nav-links {
+    display: none;
+  }
+  
+  .auth-page .nav-links.active {
+    display: flex !important;
+  }
+}
