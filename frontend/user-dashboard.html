@@ -162,16 +162,13 @@ body {
   }
 
   
-  .pet-card {
-    width: 90% !important; /* Takes up most of the screen width */
-    max-width: 350px;       /* Prevents it from getting too wide on tablets */
-    margin: 10px auto;     /* Centers the single card */
-  }
-
   .pet-grid {
-    flex-direction: column !important; /* Stacks items vertically */
-    align-items: center !important;    /* Centers the stack */
-  }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 20px;
+}
 }
 </style>
   
