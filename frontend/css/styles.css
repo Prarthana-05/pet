@@ -1379,38 +1379,3 @@ body.auth-page {
 }
 
 
-.navbar {
-  background-color: #6ba5c0;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-}
-
-/* Logo styling */
-.navbar .logo {
-  color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-/* Desktop: Links in center, logout on right */
-@media (min-width: 769px) {
-  .nav-links {
-    display: flex;
-    gap: 1.5rem;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .hamburger {
-    display: none;
-  }
-  
-  #nav-toggle {
-    display: none;
-  }
-}
-
