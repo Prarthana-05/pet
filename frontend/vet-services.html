@@ -9,6 +9,148 @@
    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<style>
+  /* General Body and Title */
+body {
+  margin: 0;
+  background-color: #f4f7f6;
+  font-family: sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+/* Navbar (Matching your exact styles) */
+.navbar {
+  background-color: #6ba5c0;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.navbar .logo {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+#nav-toggle {
+  display: none;
+}
+
+#logoutBtn {
+  background-color: white;
+  color: #4CAF50;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Form and Map Styling */
+.form-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+#map {
+  margin: 20px auto;
+  width: 90%;
+  max-width: 1200px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Centering the Grid Results (Large Screen) */
+@media (min-width: 769px) {
+  #vetResults {
+    display: flex !important;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+  }
+}
+
+/* Mobile Responsiveness (Matching your exact styles) */
+@media (max-width: 768px) {
+  .navbar {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 70px !important;
+    padding: 0 20px !important;
+  }
+
+  .hamburger {
+    display: block !important;
+    order: 1 !important;
+  }
+
+  .logo {
+    order: 2 !important;
+    margin: 0 !important;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column !important;
+    position: absolute !important;
+    top: 70px !important;
+    left: 0 !important;
+    width: 100% !important;
+    background-color: #6ba5c0 !important;
+    padding: 1rem 0 !important;
+    z-index: 1000 !important;
+    gap: 0 !important;
+  }
+
+  #nav-toggle:checked ~ .nav-links {
+    display: flex !important;
+  }
+
+  .nav-links a, .nav-links #logoutBtn {
+    width: 100% !important;
+    padding: 15px 25px !important;
+    text-align: left !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+  }
+
+  .nav-links #logoutBtn {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+}
+</style>
 
 </head>
 <body>
@@ -24,8 +166,9 @@
       <a href="quiz.html">Pet Compatibility Quiz</a>
       <a href="vet-services.html">Nearby Vet & Services</a>
       <a href="adoption-requests.html">Adoption Requests</a>
+      <button id="logoutBtn">Logout</button>
     </div>
-    <button id="logoutBtn">Logout</button>
+    
   </nav>
 
   <div class="container">
