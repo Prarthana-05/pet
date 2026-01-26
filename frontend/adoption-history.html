@@ -63,6 +63,18 @@ body {
   cursor: pointer;
 }
 
+
+/* Target the correct container ID from your HTML */
+#requests-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+    color: #1a1a1a;
+}
 /* Mobile */
 @media (max-width: 768px) {
   .navbar {
@@ -140,7 +152,7 @@ body {
     max-width: 1200px;          /* Optional: Prevents cards from spreading too wide on massive monitors */
     margin: 0 auto;             /* Centers the entire container on the page */
     padding: 0 20px 40px;   
-    color :#0b0b0b !important;    /* Adds side and bottom padding for breathing room */
+    
   }
 }
 </style>
