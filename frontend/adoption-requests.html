@@ -59,13 +59,25 @@ body {
 }
 
 /* Mobile */
+/* Mobile */
 @media (max-width: 768px) {
   .navbar {
     flex-wrap: wrap;
   }
   
+  .logo {
+    order: 1;
+    margin-left: 10px;
+  }
+  
   .hamburger {
     display: block;
+    order: 0;
+  }
+  
+  #logoutBtn {
+    order: 2;
+    margin-left: auto;
   }
   
   .nav-links {
@@ -89,15 +101,12 @@ body {
     padding: 10px 20px;
   }
   
-  #logoutBtn {
-    order: 4;
-    width: calc(100% - 40px);
-    margin: 10px 20px;
-    display: none;
-  }
-  
+  .nav-links #logoutBtn,
   #nav-toggle:checked ~ #logoutBtn {
     display: block;
+    width: calc(100% - 40px);
+    margin: 10px 20px;
+    order: 4;
   }
 }
 </style>
@@ -117,9 +126,10 @@ body {
     <a href="quiz.html">Pet Compatibility Quiz</a>
     <a href="vet-services.html">Nearby Vet & Services</a>
     <a href="adoption-requests.html">Adoption Requests</a>
+    <button id="logoutBtn">Logout</button>
     
     </div>
-    <button id="logoutBtn">Logout</button>
+    
 
   </nav>
   <h2>All Adoption Requests</h2>
