@@ -59,54 +59,47 @@ body {
 }
 
 /* Mobile */
-/* Mobile */
 @media (max-width: 768px) {
   .navbar {
-    flex-wrap: wrap;
-  }
-  
-  .logo {
-    order: 1;
-    margin-left: 10px;
+    display: flex;
+    /* Pushes hamburger to far left and logo/button to the right */
+    justify-content: space-between; 
+    align-items: center;
+    padding: 1rem;
   }
   
   .hamburger {
     display: block;
-    order: 0;
+    order: 1; /* First on the left */
   }
-  
+
+  .logo {
+    order: 2; /* Moves to the middle/right */
+    margin: 0 auto 0 15px; /* Adds space after hamburger */
+  }
+
+  /* Moves logout button to the far right */
   #logoutBtn {
-    order: 2;
-    margin-left: auto;
+    order: 3;
+    margin-left: auto; 
   }
-  
+
   .nav-links {
     display: none;
-    order: 3;
+    order: 4; /* Appears below the bar when toggled */
     width: 100%;
-    flex-direction: column;
     background-color: #6ba5c0;
     position: absolute;
-    top: 60px;
+    top: 100%; /* Ensures it starts exactly at the bottom of the nav */
     left: 0;
     padding: 1rem 0;
     z-index: 999;
+    flex-direction: column;
   }
-  
-  #nav-toggle:checked + .hamburger + .nav-links {
+
+  /* Logic to show the menu */
+  #nav-toggle:checked ~ .nav-links {
     display: flex;
-  }
-  
-  .nav-links a {
-    padding: 10px 20px;
-  }
-  
-  .nav-links #logoutBtn,
-  #nav-toggle:checked ~ #logoutBtn {
-    display: block;
-    width: calc(100% - 40px);
-    margin: 10px 20px;
-    order: 4;
   }
 }
 </style>
