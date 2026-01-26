@@ -5,6 +5,208 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Add Pet | Pet App</title>
   <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+
+
+/* 1. Global Page Background (Matches Login/Landing) */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #6c7da1 !important; /* Darkest theme background */
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(40deg, #1a1a1a, #93cff1, #fcfcfd);
+    transition: background-position 0.5s ease-in-out;
+}
+
+/* 3. Centered Form Container (Matches Login Card Style) */
+.form-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+#addPetForm {
+    background: white; /* White card for high contrast readability */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 450px; /* Slightly wider for multi-input forms */
+}
+
+.form-container h2 {
+    color: #6ba5c0; /* Blue heading to match Login page */
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+/* 4. Input Field Styling */
+#addPetForm input, 
+#addPetForm select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box; /* Prevents input overflow */
+}
+
+/* 5. Blue Action Button */
+#addPetForm button[type="submit"] {
+    background-color: #6ba5c0 !important; /* Signature blue button */
+    color: white !important;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+    transition: background 0.3s ease;
+}
+
+#addPetForm button[type="submit"]:hover {
+    background-color: #5794af !important; /* Darker blue on hover */
+}
+
+
+/* ... Keep your existing Global Page Background and Body styles ... */
+
+.navbar {
+    width: 100%;
+    background-color: #1a1a1a !important; 
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Aligns Logo and Hamburger horizontally */
+    height: 70px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.navbar .logo {
+    color: #6ba5c0 !important; 
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.hamburger {
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    display: none; /* Hidden on desktop */
+}
+
+#nav-toggle {
+    display: none;
+}
+
+/* Desktop Navigation */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#logoutBtn {
+    background-color: white;
+    color: #6ba5c0;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+
+@media (max-width: 768px) {
+  .navbar {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 70px !important;
+    padding: 0 20px !important;
+    background-color: #1a1a1a !important; /* Dark top bar */
+  }
+
+  .hamburger {
+    display: block !important;
+    order: 1 !important; /* Hamburger on far left */
+  }
+
+  .logo {
+    order: 2 !important; /* Logo on far right */
+  }
+
+  /* Vertical Dropdown Styles */
+  .nav-links {
+    display: none; 
+    flex-direction: column !important;
+    position: absolute !important;
+    top: 70px !important;
+    left: 0 !important;
+    width: 100% !important;
+      color: #6ba5c0;
+
+    
+    /* CHANGE 1: Background now Black instead of Blue */
+    background-color: #0b0b0b !important; 
+    
+    padding: 2rem 0 !important;
+    z-index: 1000 !important;
+    gap: 0 !important;
+  }
+
+  #nav-toggle:checked ~ .nav-links {
+    display: flex !important;
+  }
+
+  /* CHANGE 2: Align links to the LEFT */
+  .nav-links a, 
+  .nav-links #logoutBtn {
+    width: 100% !important;
+    padding: 15px 30px !important; /* Left padding for spacing */
+    text-align: left !important;    /* Forces text to the left side */
+    border-radius: 0 !important;
+    margin: 0 !important;
+  
+  }
+
+  /* Change hover to a darker shade or transparent */
+.nav-links a:hover {
+    text-decoration: none;     /* Change text to your theme blue */
+}
+
+  /* Logout button styling at bottom of dropdown */
+  #logoutBtn {
+    background-color: transparent !important;
+    color: #fff !important; /* Theme blue text */
+    margin-top: 20px !important;
+  }
+
+  .nav-links a:hover {
+    background-color: none !important; /* Dark grey instead of white */
+}
+}
+  </style>
 </head>
 <body>
 
@@ -37,7 +239,7 @@
         <option value="Pending">Pending</option>
         <option value="Adopted">Adopted</option>
       </select><br />
-      <input type="file" name="image" accept="image/*" required /><br />
+       <input type="file" name="image" accept="image" required /><br />
       <button type="submit">Add Pet</button>
     </form>
   </div>

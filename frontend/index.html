@@ -12,12 +12,13 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #f4f7f6;
+  background-color: #0b0b0b;
+  color: white;
 }
 
 .auth-page .navbar {
   width: 100%;
-  background-color: #6ba5c0;
+ background-color: #1a1a1a;
   padding: 1rem 5%;
   display: flex;
   justify-content: space-between;
@@ -25,8 +26,8 @@
 }
 
 .auth-page .navbar .logo {
-  color: white;
-  font-size: 1.5rem;
+  color: #6ba5c0;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 
@@ -45,6 +46,7 @@
   text-decoration: none;
   font-weight: 500;
   display: inline-block;
+   margin: 0 1rem;
 }
 
 .auth-page .hamburger {
@@ -57,6 +59,8 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
+   background-color: #0b0b0b;
+  color: white;
 }
 
 #loginFormSection, #registerFormSection {
@@ -66,7 +70,39 @@
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   width: 100%;
   max-width: 400px;
+  color: #6ba5c0;
 }
+
+#loginFormSection > h2 {
+    color: #6ba5c0; /* The sky blue from your logo and buttons */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Specifically target the button inside the Login section */
+#loginForm button {
+    background-color: #6ba5c0 !important; /* Your signature project blue */
+    color: white !important;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%; /* Makes it match the input width */
+    margin-top: 15px;
+    transition: background 0.3s ease;
+}
+
+/* Darker blue shade when the user hovers over the button */
+#loginForm button:hover {
+    background-color: #5794af !important; /* Matches your landing page hover effect */
+}
+
+#loginFormSection{
+  background-color: #000000 !important; /* A light grey/off-white shade */
+}
+
 
 /* Mobile */
 @media (max-width: 768px) {
@@ -95,7 +131,7 @@
     top: 80px;
     left: 0;
     width: 100%;
-    background-color: #6ba5c0;
+    background-color: #1a1a1a;
     flex-direction: column !important;
     padding: 1rem 0;
     z-index: 1000;
