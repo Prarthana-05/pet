@@ -11,11 +11,10 @@
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <style>
   /* General Body and Title */
-/* General Body and Title */
 body {
   margin: 0;
   background-color: #f4f7f6;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: sans-serif;
 }
 
 h2 {
@@ -23,7 +22,7 @@ h2 {
   margin: 2rem 0;
 }
 
-/* Navbar Base Styles */
+/* Navbar (Matching your exact styles) */
 .navbar {
   background-color: #6ba5c0;
   padding: 1rem 2rem;
@@ -31,7 +30,6 @@ h2 {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  height: 70px;
 }
 
 .navbar .logo {
@@ -40,11 +38,9 @@ h2 {
   font-weight: bold;
 }
 
-/* Navbar Links Container */
 .nav-links {
-  display: flex; /* Visible by default on desktop */
+  display: flex;
   gap: 1.5rem;
-  align-items: center;
 }
 
 .nav-links a {
@@ -53,12 +49,8 @@ h2 {
   font-weight: 500;
 }
 
-.nav-links a:hover {
-  text-decoration: underline;
-}
-
 .hamburger {
-  display: none; /* Hidden on desktop */
+  display: none;
   font-size: 28px;
   color: white;
   cursor: pointer;
@@ -68,7 +60,6 @@ h2 {
   display: none;
 }
 
-/* Logout Button Base */
 #logoutBtn {
   background-color: white;
   color: #4CAF50;
@@ -76,12 +67,6 @@ h2 {
   padding: 0.5rem 1rem;
   border-radius: 5px;
   cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-#logoutBtn:hover {
-  background-color: #eee;
 }
 
 /* Form and Map Styling */
@@ -92,20 +77,12 @@ h2 {
   margin-bottom: 2rem;
 }
 
-.form-container input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 300px;
-}
-
 #map {
   margin: 20px auto;
   width: 90%;
   max-width: 1200px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  background: #fff;
 }
 
 /* Centering the Grid Results (Large Screen) */
@@ -121,26 +98,31 @@ h2 {
   }
 }
 
-/* Mobile Responsiveness (Small Screen) */
+/* Mobile Responsiveness (Matching your exact styles) */
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
   .navbar {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    height: 70px !important;
     padding: 0 20px !important;
+    flex-wrap: wrap !important;
   }
 
-  /* Hamburger Left, Logo Right */
   .hamburger {
     display: block !important;
-    order: 1 !important;
+    order: 0 !important;
   }
 
   .logo {
-    order: 2 !important;
-    margin: 0 !important;
+    order: 1 !important;
+    margin-left: 15px !important;
   }
 
-  /* Vertical Dropdown Styles */
   .nav-links {
-    display: none; /* Hidden on mobile until toggled */
+    display: none;
     flex-direction: column !important;
     position: absolute !important;
     top: 70px !important;
@@ -150,37 +132,26 @@ h2 {
     padding: 1rem 0 !important;
     z-index: 1000 !important;
     gap: 0 !important;
+    order: 3 !important;
   }
 
-  /* Show the dropdown when hamburger is clicked */
-  #nav-toggle:checked ~ .nav-links {
+  #nav-toggle:checked + .hamburger + .nav-links {
     display: flex !important;
   }
 
-  /* Items inside the dropdown */
-  .nav-links a, 
-  .nav-links #logoutBtn {
+  .nav-links a, .nav-links #logoutBtn {
     width: 100% !important;
     padding: 15px 25px !important;
     text-align: left !important;
     border-radius: 0 !important;
     margin: 0 !important;
-    box-sizing: border-box;
+    box-sizing: border-box !important;
   }
 
   .nav-links #logoutBtn {
     background-color: rgba(255, 255, 255, 0.2) !important;
     color: white !important;
     border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-  }
-  
-  .form-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .form-container input {
-    width: 90%;
   }
 }
 </style>
