@@ -11,6 +11,7 @@
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <style>
   /* General Body and Title */
+/* General Body and Title */
 body {
   margin: 0;
   background-color: #f4f7f6;
@@ -22,14 +23,15 @@ h2 {
   margin: 2rem 0;
 }
 
-/* Navbar (Matching your exact styles) */
+/* Navbar */
 .navbar {
   background-color: #6ba5c0;
   padding: 1rem 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Pushes Logo to Left, Links/Button to Right */
   align-items: center;
   position: relative;
+  height: 70px;
 }
 
 .navbar .logo {
@@ -38,9 +40,11 @@ h2 {
   font-weight: bold;
 }
 
+/* Desktop Navigation */
 .nav-links {
-  display: flex;
+  display: flex; /* Ensures button and links show on big screens */
   gap: 1.5rem;
+  align-items: center;
 }
 
 .nav-links a {
@@ -60,6 +64,7 @@ h2 {
   display: none;
 }
 
+/* Logout Button */
 #logoutBtn {
   background-color: white;
   color: #4CAF50;
@@ -67,6 +72,7 @@ h2 {
   padding: 0.5rem 1rem;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 /* Form and Map Styling */
@@ -85,7 +91,7 @@ h2 {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Centering the Grid Results (Large Screen) */
+/* Grid Centering */
 @media (min-width: 769px) {
   #vetResults {
     display: flex !important;
@@ -98,17 +104,10 @@ h2 {
   }
 }
 
-/* Mobile Responsiveness (Matching your exact styles) */
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .navbar {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: flex-start !important;
-    align-items: center !important;
-    height: 70px !important;
     padding: 0 20px !important;
-    flex-wrap: wrap !important;
   }
 
   .hamburger {
@@ -119,6 +118,7 @@ h2 {
   .logo {
     order: 1 !important;
     margin-left: 15px !important;
+    margin-right: auto !important; /* Keeps logo pushed left next to hamburger */
   }
 
   .nav-links {
@@ -132,10 +132,10 @@ h2 {
     padding: 1rem 0 !important;
     z-index: 1000 !important;
     gap: 0 !important;
-    order: 3 !important;
   }
 
-  #nav-toggle:checked + .hamburger + .nav-links {
+  /* Show Dropdown */
+  #nav-toggle:checked ~ .nav-links {
     display: flex !important;
   }
 
@@ -162,6 +162,7 @@ h2 {
   <nav class="navbar">
 
     <div class="logo">PetAdopt</div>
+
     <input type="checkbox" id="nav-toggle" />
   <label for="nav-toggle" class="hamburger">&#9776;</label>
     <div class="nav-links">

@@ -5,10 +5,125 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Add Pet | Pet App</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <style>
+/* Add Pet Page */
+body {
+  margin: 0;
+  background-color: #f4f7f6;
+}
+
+.navbar {
+  background-color: #6ba5c0;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.navbar .logo {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+#nav-toggle {
+  display: none;
+}
+
+#logoutBtn {
+  background-color: white;
+  color: #4CAF50;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+  .hamburger {
+    display: block;
+    order: 0;
+  }
+  
+  .logo {
+    order: 1;
+    margin-left: 10px;
+  }
+  
+  #logoutBtn {
+    display: none;
+  }
+  
+  .nav-links {
+    display: none;
+    order: 3;
+    width: 100%;
+    flex-direction: column;
+    background-color: #6ba5c0;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 0;
+    z-index: 999;
+    transform: none;
+  }
+  
+  #nav-toggle:checked + .hamburger + .nav-links {
+    display: flex;
+  }
+  
+  .nav-links a {
+    padding: 15px 20px;
+  }
+  
+  /* Logout in dropdown */
+  #nav-toggle:checked ~ #logoutBtn {
+    display: block;
+    width: calc(100% - 40px);
+    margin: 10px 20px;
+    order: 4;
+    position: absolute;
+    top: calc(60px + 250px);
+    left: 0;
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+  }
+}
+</style>
+
 </head>
 <body>
 
   <nav class="navbar">
+     <div class="logo">PetAdopt</div>
     
     <input type="checkbox" id="nav-toggle" />
   <label for="nav-toggle" class="hamburger">&#9776;</label>
@@ -18,8 +133,9 @@
       <a href="quiz.html">Pet Compatibility Quiz</a>
       <a href="vet-services.html">Nearby Vet & Services</a>
       <a href="adoption-requests.html">Adoption Requests</a>
+      <button id="logoutBtn">Logout</button>
     </div>
-    <button id="logoutBtn">Logout</button>
+    
   </nav>
 
   <div class="form-container">
