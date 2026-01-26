@@ -1410,3 +1410,35 @@ body.auth-page {
     width: 100%;
   }
 }
+
+
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    order: 3;
+    width: 100%;
+    flex-direction: column;
+    background-color: #6ba5c0;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 1rem 0;
+    z-index: 999; /* Add this */
+  }
+  
+  #nav-toggle:checked + .hamburger + .nav-links {
+    display: flex;
+  }
+  
+  /* Add logout as last link */
+  #nav-toggle:checked ~ #logoutBtn {
+    display: block;
+    position: absolute;
+    top: calc(60px + (number_of_links * 50px)); /* Adjust based on links */
+    left: 0;
+    width: 100%;
+    background-color: #6ba5c0;
+    z-index: 999;
+  }
+}
