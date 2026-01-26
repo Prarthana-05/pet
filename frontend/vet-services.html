@@ -133,6 +133,25 @@ body {
     width: 100% !important;
     text-align: left !important;
   }
+
+
+  * This targets the boxes inside the vetResults grid */
+  #vetResults .pet-card {
+    width: 95% !important;      /* Makes every box the same width */
+    max-width: 400px;           /* Prevents boxes from getting too wide on tablets */
+    margin: 10px auto !important; /* Centers each box horizontally */
+    box-sizing: border-box;     /* Ensures padding doesn't break the width */
+    background-color: white !important; /* Keeps background consistent */
+    color: #1a1a1a !important;   /* Ensures text is visible */
+  }
+
+  /* Ensures the container stacks the boxes in one column */
+  #vetResults {
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: center !important;
+    padding: 0 !important;
+  }
 }
 
 .container { padding: 20px; text-align: center; }
