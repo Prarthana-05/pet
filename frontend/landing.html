@@ -5,6 +5,135 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PetAdopt - Find Your Best Friend</title>
  <link rel="stylesheet" href="css/styles.css">
+
+ <style>
+/* Landing Page Only */
+body.landing-page {
+  margin: 0;
+  background-color: #0b0b0b;
+  color: white;
+}
+
+.landing-page .navbar {
+  background-color: #1a1a1a;
+  padding: 1.5rem 5%;
+}
+
+.landing-page .navbar .logo {
+  color: #6ba5c0;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.landing-page .nav-links {
+  list-style: none;
+}
+
+.landing-page .nav-links a {
+  color: white;
+  margin: 0 1rem;
+}
+
+.landing-page .hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: calc(100vh - 80px);
+  padding: 0 5%;
+  gap: 3rem;
+}
+
+.landing-page .hero-content {
+  flex: 2;
+  max-width: 600px;
+}
+
+.landing-page .hero-content h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.landing-page .hero-content h1 span {
+  color: #6ba5c0;
+}
+
+.landing-page .hero-content p {
+  font-size: 1.2rem;
+  color: #aaa;
+  margin-bottom: 2rem;
+}
+
+.landing-page .hero-image {
+  flex: 1;
+}
+
+.landing-page .hero-image img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+}
+
+.landing-page .btn-primary {
+  background-color: #6ba5c0;
+  color: white;
+  padding: 15px 40px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.landing-page .btn-primary:hover {
+  background-color: #5794af;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .landing-page .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 5%;
+  }
+  
+  .landing-page .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .landing-page .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .landing-page .hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+  }
+  
+  .landing-page .nav-links {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #1a1a1a;
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+  
+  .landing-page .nav-links.active {
+    display: flex;
+  }
+  
+  .landing-page .nav-links a {
+    padding: 12px 20px;
+    display: block;
+  }
+}
+</style>
+
 </head>
 <body class="landing-page">
  <nav class="navbar">
