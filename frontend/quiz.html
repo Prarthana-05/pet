@@ -68,6 +68,11 @@ body {
   font-weight: 500;
 }
 
+.form-container h2,
+.form-container h3 {
+  color: #0b0b0b;      /* makes heading visible */
+  margin-bottom: 15px;
+}
 /* Mobile */
 @media (max-width: 768px) {
   .navbar {
@@ -130,16 +135,14 @@ body {
   .nav-links a:hover {
     text-decoration: none;     /* Change text to your theme blue */
 }
-
 .form-container {
-    padding: 10px !important; /* Reduces outer spacing */
+    margin: 40px 20px !important;  /* creates black space around box */
   }
 
   #quizForm {
-    width: 90% !important;   /* Shrinks the form width */
-    margin: 0 auto;          /* Keeps it centered */
-    padding: 15px !important; /* Reduces inner spacing */
-    font-size: 0.9rem;       /* Slightly smaller text for better fit */
+    max-width: 400px;              /* keeps box small */
+    margin: 0 auto;                /* centers it */
+    padding: 14px !important;
   }
 
 
