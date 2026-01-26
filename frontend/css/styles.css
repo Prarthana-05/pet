@@ -1379,3 +1379,34 @@ body.auth-page {
 }
 
 
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+  
+  .logo {
+    order: 1;
+  }
+  
+  .hamburger {
+    order: 0;
+  }
+  
+  /* Move logout inside dropdown */
+  #logoutBtn {
+    order: 4;
+    width: 90%;
+    margin: 10px auto;
+    display: none; /* Hide by default */
+  }
+  
+  /* Show logout when menu open */
+  #nav-toggle:checked ~ #logoutBtn {
+    display: block;
+  }
+  
+  .nav-links {
+    order: 3;
+    width: 100%;
+  }
+}
