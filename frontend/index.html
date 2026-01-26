@@ -6,9 +6,7 @@
   <title>Auth | Pet App</title>
   <link rel="stylesheet" href="css/styles.css">
 
-  <style>
-/* Auth Page Only */
-body.auth-page {
+ body.auth-page {
   margin: 0;
   padding: 0;
   display: flex;
@@ -33,15 +31,20 @@ body.auth-page {
 }
 
 .auth-page .nav-links {
-  display: flex;
+  display: flex !important; /* Force visible on desktop */
   list-style: none;
   gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  position: static !important; /* Reset mobile positioning */
+  flex-direction: row !important; /* Horizontal on desktop */
 }
 
 .auth-page .nav-links a {
   color: white;
   text-decoration: none;
   font-weight: 500;
+  display: inline-block;
 }
 
 .auth-page .hamburger {
@@ -73,7 +76,7 @@ body.auth-page {
   }
   
   .auth-page .hamburger {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
@@ -87,19 +90,19 @@ body.auth-page {
   }
   
   .auth-page .nav-links {
-    display: none;
-    position: absolute;
+    display: none !important;
+    position: absolute !important;
     top: 80px;
     left: 0;
     width: 100%;
     background-color: #6ba5c0;
-    flex-direction: column;
+    flex-direction: column !important;
     padding: 1rem 0;
     z-index: 1000;
   }
   
   .auth-page .nav-links.active {
-    display: flex;
+    display: flex !important;
   }
   
   .auth-page .nav-links a {
@@ -110,27 +113,7 @@ body.auth-page {
   .auth-page .logo {
     font-size: 1.8rem;
   }
-
 }
-
-
-.auth-page .nav-links {
-  display: flex;
-  list-style: none;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-
-.auth-page .nav-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  display: block; /* ADD THIS */
-}
-
-</style>
-
 
 </head>
 <body class="auth-page">
