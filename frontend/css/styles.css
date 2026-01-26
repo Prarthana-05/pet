@@ -1414,29 +1414,3 @@ body.auth-page {
   }
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .navbar {
-    flex-wrap: wrap;
-  }
-  
-  .nav-links {
-    display: none;
-    order: 3;
-    width: 100%;
-    flex-direction: column;
-    background-color: #6ba5c0;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    padding: 1rem 0;
-  }
-  
-  #nav-toggle:checked + .hamburger + .nav-links {
-    display: flex;
-  }
-  
-  .nav-links a {
-    padding: 10px 20px;
-  }
-}
