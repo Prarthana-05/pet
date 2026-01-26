@@ -5,10 +5,109 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adoption Requests</title>
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+/* Adoption Requests Page */
+body {
+  margin: 0;
+  background-color: #f4f7f6;
+}
+
+.navbar {
+  background-color: #6ba5c0;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.navbar .logo {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+#nav-toggle {
+  display: none;
+}
+
+#logoutBtn {
+  background-color: white;
+  color: #4CAF50;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+  
+  .hamburger {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none;
+    order: 3;
+    width: 100%;
+    flex-direction: column;
+    background-color: #6ba5c0;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 1rem 0;
+    z-index: 999;
+  }
+  
+  #nav-toggle:checked + .hamburger + .nav-links {
+    display: flex;
+  }
+  
+  .nav-links a {
+    padding: 10px 20px;
+  }
+  
+  #logoutBtn {
+    order: 4;
+    width: calc(100% - 40px);
+    margin: 10px 20px;
+    display: none;
+  }
+  
+  #nav-toggle:checked ~ #logoutBtn {
+    display: block;
+  }
+}
+</style>
+
+  
 </head>
 <body>
 
     <nav class="navbar">
+      <div class="logo">PetAdopt</div>
       
     <input type="checkbox" id="nav-toggle" />
   <label for="nav-toggle" class="hamburger">&#9776;</label>
