@@ -1378,10 +1378,3 @@ body.auth-page {
   }
 }
 
-/* Update this section in your styles.css */
-.nav-links {
-  display: flex;
-  gap: 1.5rem;          /* Space between the individual links */
-  margin-left: auto;    /* THIS PUSHES THE LINKS TO THE RIGHT */
-  margin-right: 2rem;   /* THIS ADDS SPACE BETWEEN LINKS AND LOGOUT BUTTON */
-}
