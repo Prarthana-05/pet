@@ -1413,34 +1413,3 @@ body.auth-page {
 
 
 
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    order: 3;
-    width: 100%;
-    flex-direction: column;
-    background-color: #6ba5c0;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    padding: 1rem 0;
-    z-index: 999;
-  }
-  
-  .nav-links a {
-    padding: 10px 20px;
-    color: white;
-  }
-  
-  /* Style logout button inside nav-links */
-  .nav-links #logoutBtn {
-    width: calc(100% - 40px);
-    margin: 10px 20px;
-    background-color: white;
-    color: #4CAF50;
-  }
-  
-  #nav-toggle:checked + .hamburger + .nav-links {
-    display: flex;
-  }
-}
