@@ -1351,3 +1351,14 @@ body.auth-page {
 
 
 
+/* FROM THIS: */
+.auth-page .nav-links {
+    display: none !important;
+    /* ... rest of styles ... */
+}
+
+/* TO THIS: */
+.auth-page .nav-links {
+    display: none;  /* Remove !important */
+    /* ... rest of styles ... */
+}
