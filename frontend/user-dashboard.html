@@ -127,15 +127,6 @@ body {
 }
 
 /* --- Pet Card Styling --- */
-.pet-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    padding: 20px;
-    color: #1a1a1a ;
-}
-
 
 .pet-card {
     background: white !important; /* */
@@ -155,11 +146,11 @@ body {
 /* Ensures images inside the cards also match */
 .pet-card img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;           /* Prevents image distortion */
+    height: 200px;           /* Fixed height */
+    object-fit: cover;       /* Already there ✓ */
+    object-position: center; /* ADD THIS - centers the image */
     border-radius: 8px;
 }
-
 /* Centering for Large Screens */
 @media (min-width: 769px) {
   h2 {
