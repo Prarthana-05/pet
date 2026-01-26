@@ -80,8 +80,52 @@ body {
     cursor: pointer;
     font-weight: bold;
 }
+.form-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: transparent !important; /* Ensures the dark body shows through */
+}
 
 
+/* Style the white card */
+#editPetForm {
+    background: white !important; /* Matches Add Pet design */
+    padding: 40px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Style the auto-generated inputs */
+#editPetForm input, 
+#editPetForm select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    color: #333; /* Dark text for readability on white */
+}
+
+/* Style the Save button to be theme blue */
+#editPetForm button[type="submit"] {
+    background-color: #6ba5c0 !important; /* Signature blue */
+    color: white !important;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+}
 
 .form-container h2 {
     color: #6ba5c0 !important; /* Signature blue to match your theme */
