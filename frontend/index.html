@@ -5,6 +5,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Auth | Pet App</title>
   <link rel="stylesheet" href="css/styles.css">
+
+  <style>
+/* Auth Page Only */
+body.auth-page {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f4f7f6;
+}
+
+.auth-page .navbar {
+  width: 100%;
+  background-color: #6ba5c0;
+  padding: 1rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth-page .navbar .logo {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.auth-page .nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.auth-page .nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-page .hamburger {
+  display: none;
+}
+
+.auth-page .auth-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+#loginFormSection, #registerFormSection {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .auth-page .navbar {
+    height: 80px;
+    position: relative;
+  }
+  
+  .auth-page .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+  
+  .auth-page .hamburger span {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 2px;
+  }
+  
+  .auth-page .nav-links {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: #6ba5c0;
+    flex-direction: column;
+    padding: 1rem 0;
+    z-index: 1000;
+  }
+  
+  .auth-page .nav-links.active {
+    display: flex;
+  }
+  
+  .auth-page .nav-links a {
+    padding: 12px 20px;
+    display: block;
+  }
+  
+  .auth-page .logo {
+    font-size: 1.8rem;
+  }
+}
+</style>
+
+
 </head>
 <body class="auth-page">
   
